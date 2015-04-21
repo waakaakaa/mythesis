@@ -1,0 +1,14 @@
+xelatex main.tex
+xelatex main.tex
+bibtex main
+xelatex main.tex
+xelatex main.tex
+
+rm *.aux
+rm *.bbl
+rm *.blg
+rm *.idx
+rm *.log
+rm *.out
+rm *.toc
+
