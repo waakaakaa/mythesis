@@ -142,7 +142,7 @@ As the telecommunications industry enters the twenty-first century the demand fo
 
 在实现单片集成的方法中，也有一些一般性的指引。首先，所使用的方法不应该是费时或昂贵的。这是对现有的分立器件实现降低成本的关键。其次，集成不应该导致整体性能下降。这是一个困难的任务，因为每个分立器件在设计时都是独立优化的。然而，如前所述，集成组件必须能实现特定功能，但并不一定需要分立器件的性能互相匹配。这提供了一定的灵活性，即可能允许使用相同的生长和加工平台去制造具有不同功能的设备。最后，该过程的复杂性，在集成元件数目增加时应保持不变。不然，制造过程可能会增加制造成本，并可能导致成品率降低。接下来我们将回顾一些过去使用的单片集成方法。
 
-已经有一些很好的方法用来生产简单的光子集成回路了。这样的方法包括但不限于对接再生长 \cite{binsma1997characterization}，选择性区域生长 \cite{aoki1993ingaas}，和使用偏置量子阱 \cite{mason1999widely}。 首先，对接再生长就是把一部分的波导芯层去掉，再用另一种材料再生长。这个过程中，要精确地刻蚀原来的波导的芯层，然后重新生长的波导材料又要在成分和厚度上与原来的匹配，这是非常困难的。另一种SAG方法的关键是掩模的选择性生长。在这个过程中，在外延之前需要先在表面生长一层掩模。掩模的形状可以决定外延生长的组分和厚度。在晶片的某些能带边缘，这种方法是有用的，但是在这些区域内由于厚度的变化，光学限制因子就不能被单独优化了。最后，偏置量子阱就是在波导之上的一层量子阱被选择性地除去。这种方法已经成功地被用来制造各种集成芯片 \cite{mason1999widely} \cite{mason2000design} \cite{mason1998tunable} \cite{fish1998compact}。 然而，使用偏置量子阱时，整块芯片只能使用一到两个能带边缘，对于制造复杂的光子集成回路就束手无策了。
+已经有一些很好的方法用来生产简单的光子集成回路了。这样的方法包括但不限于对接再生长 \cite{binsma1997characterization-BJR}，选择性区域生长 \cite{aoki1993ingaas-SAG}，和使用偏置量子阱 \cite{mason1999widely-offset}。 首先，对接再生长就是把一部分的波导芯层去掉，再用另一种材料再生长。这个过程中，要精确地刻蚀原来的波导的芯层，然后重新生长的波导材料又要在成分和厚度上与原来的匹配，这是非常困难的。另一种SAG方法的关键是掩模的选择性生长。在这个过程中，在外延之前需要先在表面生长一层掩模。掩模的形状可以决定外延生长的组分和厚度。在晶片的某些能带边缘，这种方法是有用的，但是在这些区域内由于厚度的变化，光学限制因子就不能被单独优化了。最后，偏置量子阱就是在波导之上的一层量子阱被选择性地除去。这种方法已经成功地被用来制造各种集成芯片 \cite{mason1999widely-offset} \cite{mason2000design-offset} \cite{mason1998tunable-offset} \cite{fish1998compact-offset}。 然而，使用偏置量子阱时，整块芯片只能使用一到两个能带边缘，对于制造复杂的光子集成回路就束手无策了。
 
 在生产简单的光子集成回路时，一般只有少于三个的能带边缘，这些方法能很好地工作。但对于较大规模的集成就不适合了。大规模的集成需要多个能带边缘，理想情况下每个集成组件一个。例如，半导体激光器为了让增益峰和工作波长一致，就需要一个能带边缘，而电吸收调制器需要的能带要比激光器的能带稍微大一些。如此一来，首先确定了每个器件的能带之后，再来对各个器件的性能进行优化。
 
@@ -151,24 +151,29 @@ As the telecommunications industry enters the twenty-first century the demand fo
 随着密集波分复用（DWDM）技术的广泛使用，波长敏捷型光子集成回路变得越来越重要。波分复用技术通过在一路光纤中传输多路光信号的方法，增加了网络的带宽。国际通信联盟（ICU）制定了WDM的基本规则。现在的光信道的间隔为100GHz或0.8纳米，未来将会变成50GHz或25GHz。要实现WDM，就需要激光器覆盖ICU规定的每个信道。想要覆盖这么多的信道，使用大范围可调谐激光器是一个明智的选择。
 
 现在人们在实验室已经制造出了很多种大范围可调谐激光器。其中一种就是V型腔激光器。V型腔激光器的示意图如图\ref{fig_vccl}所示。其主要部分包含两个长度不同的光学谐振腔，一个耦合相位为 180°的半波耦合器以及一个波长调谐区。另外在V字型的闭合端（图\ref{fig_vccl}中右端）有一个耦合器，V字型的开口端（图\ref{fig_vccl} 中左端）为一个多模耦合器（MMI）。
+
 \begin{figure}[htb]
   \centering
   \includegraphics[width=0.7\textwidth]{./Pictures/vccl.eps}\\
-  \caption{V型腔激光器的光学显微镜图\cite{jin201116}}\label{fig_vccl}
+  \caption{V型腔激光器的光学显微镜图\cite{jin201116-VCCL}}\label{fig_vccl}
 \end{figure}
+
 其中第一个光学谐振腔由一段光波导以及两端的深刻蚀反射槽构成，该段光学波导上面镀有一段电极用来注入电流以提供激光器谐振所需的增益，我们称之为固定增益腔（Fix Gain Cavity）。第二个光学谐振腔由两段光学波导以及两端的深刻蚀反射槽构成，其中一段波导提供增益，另一段波导为无源波导，可以通过注入电流来改变其光学长度从而来调谐激光器的工作波长，因此称之为信道选择腔（Channel Selector Cavity）。两段波导中间由一个浅刻蚀槽隔开。在V字型的闭合端，两个谐振腔中间由一个耦合相位为 180°的半波耦合器相连，通过设计优化两个腔之间的耦合系数可以使得整个复合耦合腔激光器实现高的边模抑制比和良好的单模特性。另外波长调谐区离耦合区较远，使得其折射率的改
 变几乎不影响两个谐振腔之间的耦合系数。左端的MMI 耦合器用来将两根波导的输出光耦合到一跟波导，同时可以通过调节一个臂的注入电流来切换光输出的端口，用以做空间光开光。
 
 为了实现激光器工作波长的数字式调谐，固定增益腔的长度要根据激光器的工作波长来确定，使得固定增益腔的谐振频率的间隔与预先要求的频率间隔一致，例如根据ITU的规定，各个通信波长的间隔为200GHz、100GHz或者50GHz等。谐振腔的频率间隔可由下式确定：
+
 \begin{equation}
   \Delta f = \frac{c}{2 n_g L}
 \end{equation}
+
 其中$c$是真空中的光速，$n_g$是波导的有效群折射率，$L$是固定增益腔的长度。
 
 同样，第二个谐振腔（信道选择腔）的频率间隔$\Delta f ^\prime$由式\ref{eqa_Daltafprime}决定：
 \begin{equation}\label{eqa_Daltafprime}
   \Delta f ^\prime= \frac{c}{2 n_g^\prime L^\prime} = \frac{c}{2 (n_a L_a + n_b L_b)}
 \end{equation}
+
 其中$L_a$和$L_b$分别为信道选择腔的增益区以及波长调谐区的长度，同样$n_a$和$n_b$分别为信道选择腔的增益区以及波长调谐区的有效群折射率。$L^\prime=L_a+L_b$是信道选择腔的总长度，$n_g^\prime=(n_a L_a + n_b L_b)/L^\prime$是信道选择腔的平均有效群折射率。
 
 信道选择腔的频率间隔$\Delta f ^\prime$选择为与固定增益腔的频率间隔$\Delta f$有一个微小的差别，这使得在工作物质的增益窗口内，两者只有一个谐振峰恰好重合（如图\ref{fig_Deltaf}所示）。两个谐振腔相邻的互相重合的谐振峰之间的间隔为组合腔的自由光谱范围（FSR），其大小由式\ref{eqa_Daltafc}决定。为了避免两个波长同时被激发，$\Delta f_c$一般来讲必须大于激光器工作物质增益窗口的宽度。
@@ -206,6 +211,20 @@ As the telecommunications industry enters the twenty-first century the demand fo
 
 本文的主要工作就是改进V型腔激光器的调谐功能。将以往基于温度变化的波长调谐技术，转变成基于载流子注入的波长调谐技术。所使用到的关键技术就是氟化氪紫外激光器诱导的量子阱混杂技术。本文第二章将介绍量子阱混杂技术以及从理论上解释其原理。第三章将介绍氟化氪紫外激光器诱导的量子阱混杂技术的工艺步骤和实验结果。第四章将介绍该技术用于V型腔激光器之后的效果。第五章进行总结与展望。
 
+%%%%%%%%%%%%%%%%%%%%%%
+\chapter{单片集成技术概述}
+
+\section{BJR}
+
+\section{SAG}
+
+\section{offset QW}
+
+\section{Si-III/混合集成}
+
+\section{量子阱混杂技术}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{量子阱混杂技术回顾与理论模拟}
 
 本章首先回顾了各种量子阱混杂技术，并比较他们的优缺点。然后从理论上介绍了量子阱混杂的机理，利用量子阱能带理论和经典的扩散方程，模拟了磷化铟量子阱能带移动的现象。
@@ -214,7 +233,10 @@ As the telecommunications industry enters the twenty-first century the demand fo
 
 量子阱混杂是一个量子阱的阱和势垒相互扩散的过程。在这个过程中，随着扩散的不断增强，量子阱的形状和厚度也随之不断变化，从而导致能带的变化。变化之后的能带对应的能量一般来说都是增加的，也就是波长发生蓝移。在一般情况下，量子阱的阱和势垒之间的界面是亚稳态的，在一定的条件下，例如高温下，量子阱的阱和势垒的原子会相互扩散。量子阱混杂的目标不是简单地使阱和势垒相互扩散，而是在整个区域中做选择性的扩散。
 
-已经有很多种方法可以实现量子阱混杂的效果，例如杂质诱导无序（IID） \cite{holonyak1998impurity} ，无杂质空位增强无序（IFVD） \cite{si1998area}，光吸收诱导无序（PAID） \cite{mckee1997monolithic}，离子注入增强扩散\cite{charbonneau1998photonic}等等。
+已经有很多种方法可以实现量子阱混杂的效果，例如杂质诱导无序（IID） \cite{holonyak1998impurity-IID} ，无杂质空位增强无序（IFVD） \cite{si1998area-IFVD}，光吸收诱导无序（PAID） \cite{mckee1997monolithic-PAID}，离子注入增强扩散\cite{charbonneau1998photonic-implantation}等等。
+
+%%%%%%%%%%%%%%%%%
+\chapter{量子阱混杂技术的理论模拟}
 
 \section{量子阱原理}
 
@@ -222,8 +244,28 @@ As the telecommunications industry enters the twenty-first century the demand fo
 
 \section{混杂模型}
 
-\section{实验证据}
+\section{混杂前后的禁带宽度对比}
 
+%%%%%%%%%%%%%%%%%%%%%%
+\chapter{量子阱混杂技术的工艺研究}
+
+\section{氩气等离子体轰击法}
+
+\section{KrF准分子激光器照射法}
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{量子阱混杂技术在集成光子回路中的应用}
+
+\section{包含量子阱混杂技术的V型腔激光器的设计}
+
+\section{包含量子阱混杂技术的V型腔激光器的制作过程}
+
+\section{测试结果}
+
+\section{结果分析}
+
+%%%%%%%%%%%%%%%%%%%%
 \chapter{总结和展望}
 
 \section{本文总结}
@@ -253,7 +295,7 @@ As the telecommunications industry enters the twenty-first century the demand fo
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{publications}
 \begin{enumerate}
-\item{Yuan Zhuang, \textbf{Xin Zhang}, Mohammad Kaleem and Jian-Jun He. "LARGE BANDGAP SHIFT BY  UV EXCIMER LASER INDUCED QUANTUM WELL INTERMIXING FOR PHOTONIC INTEGRATION." Asia Communications and Photonics Conference and Exhibition. Optical Society of America, 2013.}
+\item{Yuan Zhuang, \textbf{Xin Zhang}, Mohammad Kaleem and Jian-Jun He. "Large bandgap shift by UV excimer laser induced quantum well intermixing for photonic integration." Asia Communications and Photonics Conference and Exhibition. Optical Society of America, 2013.}
 \item{Kaleem, Mohammad, et al. "UV laser induced selective-area bandgap engineering for fabrication of InGaAsP/InP laser devices." Optics and Laser Technology 51 (2013): 36-42.}
 \item{Kaleem, Mohammad, \textbf{Xin Zhang}, and Jian-Jun He. "Bandgap engineering of InGaAsP/InP laser structure by argon plasma induced point defects." Communications and Photonics Conference (ACP), 2012 Asia. IEEE, 2012.}
 \item{彭盛华, \textbf{张欣}, and 何建军. "氩等离子体诱导量子阱混合技术." 浙江大学学报 (工学版) 6 (2011): 015.}

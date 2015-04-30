@@ -12,3 +12,4 @@ rm *.log
 rm *.out
 rm *.toc
 
+open main.pdf
