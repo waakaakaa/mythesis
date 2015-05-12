@@ -1,0 +1,45 @@
+Interdiffusion of atoms across the heterointerface alters the
+composition profile across the QW structure. Mathematical models are
+needed to describe and calculate the changes in the composition
+profile as a function of the duration of interdiffusion. In the
+section, we adopt the notation $A_{x}B_{1-x}C_{y}D_{1-y}$ to denote
+the chemical formula of a III-V semiconductor material, where A and
+B represent the Group III atoms, and C and D represent the Group V
+atoms respectively. After interdiffusion the mole fractions of Group
+III and V atoms are function of position along the direction of
+crystal growth (the $z$-direction) and are denoted by $w(z)$ and
+$v(z)$.
+
+The diffusion process is usually described by the Fick's Second Law
+in the direction of crystal growth
+\begin{equation}
+\frac{\partial{C}}{\partial{t}}=D\frac{\partial^2{C}}{\partial{z^2}}
+\end{equation}
+where $C$ denotes the concentration of the atoms and $D$ is the
+diffusion coefficient. The diffusion coefficient of the atoms is
+usually assumed to be identical in the quantum well. The
+interdiffusion process is characterized by a diffusion length $L_d$,
+which is defined as $L_d=\sqrt{Dt}$, where $D$ is the diffusion
+coefficient and $t$ is the annealing time of the thermal processing.
+Consider a single
+$In_{wx}Ga_{1-wx}As_{wy}P_{1-wy}/In_{bx}Ga_{1-bx}As_{by}P_{1-by}$
+quantum well, the composition profile of In and As in this QW after
+interdiffusion are given by
+\begin{eqnarray}
+    w(z)&=&wx-\frac{bx-wx}{2} \notag\\
+        &&\times \biggr[2-\textrm{erf}\biggr(\frac{L_z+2z}{4L_d^{III}}\biggr)
+        -\textrm{erf}\biggr(\frac{L_z-2z}{4L_d^{III}}\biggr)\biggr]
+\end{eqnarray}
+
+\begin{eqnarray}
+    v(z)&=&wy-\frac{by-wy}{2} \notag\\
+        &&\times \biggr[2-\textrm{erf}\biggr(\frac{L_z+2z}{4L_d^{V}}\biggr)
+        -\textrm{erf}\biggr(\frac{L_z-2z}{4L_d^{V}}\biggr)\biggr]
+\end{eqnarray}
+
+In this case, interdiffusion can occur on both group III and V
+sublattices, which are characterized by their diffusion lengths
+$L_d^{III}$ and $L_d^V$, respectively. The diffusion length ratio,
+i.e., $k=L_d^V/L_d^{III}$, depends on the details of interdiffusion
+process and is still an open question which requires further
+studies.
