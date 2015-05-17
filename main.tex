@@ -329,6 +329,145 @@ As the telecommunications industry enters the twenty-first century the demand fo
 
 在量子阱混杂工艺研究不断取得进展的同时，人们也做了很多量子阱混杂的理论模拟方面的工作。这些模拟让人们更好地理解了量子阱混杂的机理，并指导人们在工艺上进一步优化。量子阱混杂的理论模拟最核心的问题是计算混杂之后的能带结构。也就是说，在原有的量子阱的基础上，通过加入混杂的工艺参数作为变量，计算得到混杂之后的能带结构。有了能带结构之后，就可以进一步计算材料的吸收系数，增益，折射率等等。最后，就可以计算出量子阱混杂对整个光器件的影响。这一章将详细介绍量子阱混杂的能带结构的计算方法。
 
+\section{量子阱能带计算}
+
+在半导体中，电子运动的状态可以通过解薛定谔方程得到。
+
+\begin{equation}
+    \label{schrodinger}
+    \frac{-h^2}{2} \frac{d}{dz} \frac{1}{m_\perp^*(z)} \frac{d\varphi(z)}{dz}
+    +V(z)\varphi(z)
+        = E\varphi(z)
+\end{equation}
+
+其中，$m_\perp(z)$是导带或者价带的有效质量。$V(z)$是导带或者价带的势函数。(需要结合量子力学的课本重写)
+
+然后，我们采用包络函数近似（？）对上面的方程进行简化。在这个近似中，波函数的时间和空间分量可以分离开来，得到如下的函数式
+
+其中？？是波函数的稳态解，E是能量特征值。接着，我们还需要用有效质量近似（？）再对薛定谔方程做一次简化，并且写成一维方向上的函数式，最后可以写成
+
+\begin{equation}
+    \label{eq_effective_mass}
+    \left[ \frac{-\hbar^2}{2} \frac{d}{dx} \frac{1}{m^*(x)} + V(x) \right] \psi(x) = E \psi(x)
+\end{equation}
+
+我们只需要知道有效质量$m^*(x)$和势能$V(x)$在每个x上的值，就可以求出整个系统的特征值和特征函数，对应半导体能级的能量$E$和波函数$\psi(x)$。求解上述方程的数值方法有很多，包括有限差分法、传输矩阵法和有限元法等等。我们选择了相对简单，并且精度足够用的传输矩阵法。首先，我们需要将上面方程中的势函数和有效质量进行离散化，如图\ref{fig_tmm}所示。在每一小段的离散区间内，势函数和有效质量被视为不变，也就是说，在$x_j\le x<x_j+\Delta_j=x_{j+1}$时，$V_j=V(x_j)$，$m^*_j=m^*(x_j)$，而在这一段的末尾进行$V_j\to V_{j+1}$，$m^*_j\to m^*_{j+1}$的跳变。在$x_j\le x<x_{j+1}$的区间内，方程\ref{eq_effective_mass}的解可以表示为
+
+\begin{equation}
+    \label{eq_effective_mass_solution}
+    \psi(x) = A_j \exp [i k_j (x-x_j)] + B_j \exp [-i k_j (x-x_j)]
+\end{equation}
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.7\textwidth]{./Pictures/tmm.eps}\\
+  \caption{传输矩阵法对势函数和有效质量的离散化，实线代表精确值，虚线代表离散值}
+  \label{fig_tmm}
+\end{figure}
+
+其中$k_j=\sqrt{2 m^*_j (E-V_j)} / \hbar$是波函数的波数。同时，方程\ref{eq_effective_mass}的边界条件需要满足波函数和它的导数在每个区间的连接点上连续，即如下两个方程
+
+\begin{equation}
+    \label{eq_boundary_1}
+    \psi_{j-1}(x_{j-1}) = \psi_j(x_{j-1}) 
+\end{equation}
+
+\begin{equation}
+    \label{eq_boundary_2}
+    \frac{1}{m^*_{j-1}} \frac{d}{dx} [ \psi_{j-1}(x_{j-1}) ] = \frac{1}{m^*_j} \frac{d}{dx} [\psi_j(x_{j-1})]
+\end{equation}
+
+将边界条件方程\ref{eq_boundary_1}和\ref{eq_boundary_2}代入方程\ref{eq_effective_mass}，就可以得到相邻两层的波函数振幅之间的关系，即
+
+\begin{equation}
+    \label{eq_tmm}
+    \begin{pmatrix} A_{j+1} \\ B_{j+1} \end{pmatrix} = T_{j,j+1} \begin{pmatrix} A_{j} \\ B_{j} \end{pmatrix}
+\end{equation}
+
+其中的传输矩阵为
+
+\begin{equation}
+    \label{eq_transfer_matrix}
+    T_{j,j+1} = \frac{1}{2\beta_{j+1}} \begin{pmatrix} \beta_{j+1}+\beta_j & \beta_{j+1}-\beta_j  \\ \beta_{j+1}-\beta_j  & \beta_{j+1}+\beta_j  \end{pmatrix} \begin{pmatrix} e^{ik_j\Delta_j} & 0 \\ 0 & e^{-ik_j\Delta_j} \end{pmatrix}
+\end{equation}
+
+其中$\beta_j = k_j/m^*_j$。最后，我们可以将每一层的传输矩阵从左往右连续相乘，得到如下的方程
+
+\begin{equation}
+    \label{eq_tmm_serial}
+    \begin{pmatrix} A_{N} \\ B_{N} \end{pmatrix} = T_{N-1,N}T_{N-2,N-1}\cdots T_{0,1} \begin{pmatrix} A_{0} \\ B_{0} \end{pmatrix} =  \begin{pmatrix} T_{11} & T_{12} \\ T_{21} & T_{22} \end{pmatrix} \begin{pmatrix} A_{0} \\ B_{0} \end{pmatrix}
+\end{equation}
+
+其中$N$是分段的总段数。这个连续的方程需要满足收敛条件，也就是$A_0=B_N=0$，对应于最后的方程
+
+\begin{equation}
+    \label{eq_t22}
+    T_{22}=0
+\end{equation}
+
+上面的方程是一个关于E的复数方程，它的所有解，从小到大依次就是每一个能级，代入到前面的波动方程\ref{eq_effective_mass_solution}中，就可以得到每个x点上的波函数。
+
+为了验证程序的正确性，我们选择了文献中的AlGaAs-GaAs量子阱结构\cite{jonsson1990solving}，其势能和有效质量如表\ref{tmm_sample}所示。由于导带和价带的能级计算方法完全一样，这里只给出导带的计算结果，如表所示。我们将文献中的传输矩阵法\cite{jonsson1990solving}、有限元法\cite{nakamura1989finite}的结果和我们的结果作比较，发现结果基本上是一致的，误差最大仅有0.03\%，说明了该程序是正确的。存在的一些微小偏差主要来源于对x轴的取值不同。x轴的离散化的步长和整个x轴的长度，会对能级的结果产生细微的影响。此外，我们还计算了前四个能级对应的波函数振幅的平方，并且与势函数叠加在一起，如图\ref{fig_wave1}-\ref{fig_wave4}所示。结果再一次验证了程序的正确性。
+
+\begin{table}[!t]
+    \zihao{5}
+    \caption{用于传输矩阵法计算的AlGaAs-GaAs量子阱的导带参数}
+    \centering
+    \label{tmm_sample}
+    \begin{tabular}{cccc}
+        \hline
+        阱宽（nm） & 阱深（meV） & 阱内有效质量（m0） & 阱外有效质量（m0）\\
+        \hline
+        20                & 225                 & 0.067                          & 0.0919\\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[!t]
+    \zihao{5}
+    \caption{计算得到的导带的前四个能级（meV）}
+    \centering
+    \label{tmm_sample_result}
+    \begin{tabular}{cccc}
+        \hline
+        能级 & 传输矩阵法\cite{jonsson1990solving} & 有限元法\cite{nakamura1989finite} & 我们的程序（相对于有限元法的误差） \\
+        \hline
+        1       & 9.966              & 9.967            & 9.970（0.03\%） \\
+        2       & 39.77              & 39.77            & 39.78（0.03\%） \\
+        3       & 88.92              & 88.93            & 88.96（0.03\%） \\
+        4       & 155.59            & 155.61          & 155.64（0.01\%） \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.7\textwidth]{./Pictures/wave1.eps}\\
+  \caption{势函数以及第一能级波函数振幅的平方}
+  \label{fig_wave1}
+\end{figure}
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.7\textwidth]{./Pictures/wave2.eps}\\
+  \caption{势函数以及第二能级波函数振幅的平方}
+  \label{fig_wave2}
+\end{figure}
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.7\textwidth]{./Pictures/wave3.eps}\\
+  \caption{势函数以及第三能级波函数振幅的平方}
+  \label{fig_wave3}
+\end{figure}
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.7\textwidth]{./Pictures/wave4.eps}\\
+  \caption{势函数以及第四能级波函数振幅的平方}
+  \label{fig_wave4}
+\end{figure}
+
 \section{扩散模型}
 
 Interdiffusion of atoms across the heterointerface alters the composition profile across the QW structure. Mathematical models are needed to describe and calculate the changes in the composition profile as a function of the duration of interdiffusion. In the section, we adopt the notation $A_{x}B_{1-x}C_{y}D_{1-y}$ to denote the chemical formula of a III-V semiconductor material, where A and B represent the Group III atoms, and C and D represent the Group V atoms respectively. After interdiffusion the mole fractions of Group III and V atoms are function of position along the direction of crystal growth (the $z$-direction) and are denoted by $w(z)$ and $v(z)$.
@@ -357,17 +496,6 @@ In this case, interdiffusion can occur on both group III and V sublattices, whic
 
 
 \section{能带结构计算}
-
-The optical properties of a non-square interdiffused quantum well depend on the band structure which can be found by using some existing models, such as the envelop function approximation, pseudopotential method, the tight-binding model and the effective bond-orbital model. We use the envelop function approximation because of the computationally simplicity and enough accuracy for describing phenomena occurring on a length scale large compared with the unit cell of the crystal. The envelop function for the z-direction can be obtained by solving the Schrodinger-like equation shown below.
-
-\begin{equation}
-    \label{schrodinger}
-    \frac{-h^2}{2} \frac{d}{dz} \frac{1}{m_\perp^*(z)} \frac{d\varphi(z)}{dz}
-    +V(z)\varphi(z)
-        = E\varphi(z)
-\end{equation}
-
-where $m_\perp(z)$ is the effective mass of the conduction band or valence band. $V(z)$ is the position-dependent potential energy of the conduction band heavy hole valence band or light hole valence band, which can be determined by Equation \ref{V_c}-\ref{V_LH}, respectively. This differential equation is solved using the finite-difference method (FDM) with appropriate boundary conditions. Usually we consider the quantum well contained in a large box along the z-direction with the boundary condition $\varphi=0$ at the boundaries of the box.
 
 \begin{equation}
     \label{V_c}
