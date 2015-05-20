@@ -1,13 +1,13 @@
 clear;
-h = 5e-9; % 阱宽
-H = 10e-9; % 垒宽
+h = 3.5e-9; % 阱宽
+H = 8e-9; % 垒宽
 
 length = 0.01e-9; %向量间隔
 
-bx = 0.82; % InGaAsP  ——> x,1-x,y,1-y
-by = 0.38;
-wx = 0.53;
-wy = 1;
+bx = 1; % InGaAsP  ——> x,1-x,y,1-y
+by = 0;
+wx = 0.71;
+wy = 0.61;
 
 N = 1; % 量子阱数目
 
@@ -35,7 +35,7 @@ CP2 = composition(length,h,H,1-by,1-wy,N,2.5e-9);
 CP3 = composition(length,h,H,1-by,1-wy,N,5e-9);
 
 
-
+z = z*1e9;
 subplot(2,2,1);plot(z,CIn0,z,CIn1,z,CIn2,z,CIn3);
 title('In Composotions Before And After QWI');
 legend('Ld=0','Ld=0.5','Ld=2.5','Ld=5');
@@ -55,7 +55,8 @@ xlabel('z/nm');
 ylabel('As compositions');
 
 
-subplot(2,2,4);plot(z,CP0,z,CP1,z,CP2,z,CP3);title('P Composotions Before And After QWI');
+subplot(2,2,4);plot(z,CP0,z,CP1,z,CP2,z,CP3);
+title('P Composotions Before And After QWI');
 legend('Ld=0','Ld=0.5','Ld=2.5','Ld=5');
 xlabel('z/nm');
 ylabel('P compositions');

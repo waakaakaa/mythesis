@@ -1,5 +1,5 @@
-\documentclass{ZJUthesis}
-\hypersetup{colorlinks=false}
+\documentclass[oneside]{ZJUthesis}
+\hypersetup{colorlinks=true}
 \begin{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 正文字体设定
@@ -124,13 +124,19 @@ As the telecommunications industry enters the twenty-first century the demand fo
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ZJUmainmatter
 
+%%%%%%%%%%%%%%%%%%%%
 \chapter{绪论}
+%%%%%%%%%%%%%%%%%%%%
 
 随着时代的进步，光通信技术作为引领人类信息革命的关键技术，正在蓬勃和飞速的发展。而光通信的芯片制造技术，又是光通信技术中门槛最高，附加值最大的技术，也是整个光通信领域最核心的技术。可以说，谁掌握了芯片制造的前沿技术，谁就站在了光通信技术的制高点上。近年来，单片集成和大范围可调谐激光器，正在逐渐被人们所重视，并成为了芯片制造的前沿技术。在接下来的内容中，单片集成和大范围可调谐激光器这两项技术将被详细讨论。
 
+%%%%%%%%%%%%%%%%%%%%
 \section{光通信技术的未来发展趋势}
+%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%
 \section{单片集成}
+%%%%%%%%%%%%%%%%%%%%
 
 在光通信行业，为了带来革命性的高功能、低成本的设备，单片集成是一项关键技术。芯片上的光的产生、检测、运输，由过去分立器件实现，到单片集成器件实现，是一个重大进步。这不仅将整体的成本拉了下来，还会导致新一代的高功能的集成光子回路（PIC）芯片的产生。
 
@@ -148,18 +154,24 @@ As the telecommunications industry enters the twenty-first century the demand fo
 
 在生产简单的光子集成回路时，一般只有少于三个的能带边缘，这些方法能很好地工作。但对于较大规模的集成就不适合了。大规模的集成需要多个能带边缘，理想情况下每个集成组件一个。例如，半导体激光器为了让增益峰和工作波长一致，就需要一个能带边缘，而电吸收调制器需要的能带要比激光器的能带稍微大一些。如此一来，首先确定了每个器件的能带之后，再来对各个器件的性能进行优化。
 
+%%%%%%%%%%%%%%%%%%%%
 \section{本文概述}
+%%%%%%%%%%%%%%%%%%%%
 
 (本段内容需要根据最终版本做调整！！！)本文的主要工作就是改进V型腔激光器的调谐功能。将以往基于温度变化的波长调谐技术，转变成基于载流子注入的波长调谐技术。所使用到的关键技术就是氟化氪紫外激光器诱导的量子阱混杂技术。本文第二章将介绍量子阱混杂技术以及从理论上解释其原理。第三章将介绍氟化氪紫外激光器诱导的量子阱混杂技术的工艺步骤和实验结果。第四章将介绍该技术用于V型腔激光器之后的效果。第五章进行总结与展望。
 
 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
 \chapter{单片集成技术以及量子阱混杂技术概述}
+%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%
 \section{单片集成技术的要求}
+%%%%%%%%%%%%%%%%%%%%
 
 为了实线单片集成的效果，仅仅将各个分立器件制作在同一块芯片上是远远不够的，因为我们需要考虑各个器件的禁带宽度的兼容性。如图\ref{fig_pic}所示，当激光器、调制器和无源波导集成在一块芯片上时，我们希望激光器发出的光在调制器中是透明传输的，而当调制器加上合适的电压时又可以吸收激光器的光；同时，无源波导的材料对于激光器的光又是完全透明的。由此我们可以推断，为了实现单片集成的效果时，我们希望调制器材料的禁带宽度略大于激光器的禁带宽度（通常是50nm左右），同时无源波导的禁带宽度远大于激光器的禁带宽度（通常在100nm以上）。从制作工艺的角度来说，我们需要将半导体芯片在水平面方向分成不同的区域，并且非常仔细地将每个区域的材料的禁带宽度控制在某个波长上，然后在各个区域制作不同的器件。举例来说，对于图\ref{fig_pic}的器件，如果把他看做一个用于光通信的光发射机芯片，那么我们需要将整块芯片分成激光器，调制器和无源波导三个区域。激光器的波长应该准确的位于1550nm，那么调制器的禁带宽度对应的波长应该在1500nm左右，而无源波导的禁带宽度对应的波长应该小于或等于1450nm。
 
-\begin{figure}[!htb]
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.7\textwidth]{./Pictures/pic.eps}\\
   \caption{光子集成回路示意图}
@@ -174,38 +186,50 @@ As the telecommunications industry enters the twenty-first century the demand fo
 \item{材料的其他特性应该尽量保持不变，比如折射率、损耗、电特性等}
 \end{enumerate}
 
+%%%%%%%%%%%%%%%%%%%%
 \section{单片集成技术的方法}
+%%%%%%%%%%%%%%%%%%%%
 
 为了在一块芯片上做出不同的禁带宽度，在过去的几十年中，已经有很多种方法实现这样的效果。然而，每一种方法都有他的优点和缺点，所以在实际生产中，还没有形成一种通常的解决方案，这也是该领域值得研究的一个问题。图\ref{fig_pic_methods}例举了几十年来人们所研究的各种单片集成方法。
 
-\begin{figure}[!htb]
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.7\textwidth]{./Pictures/pic_methods.eps}\\
   \caption{有源和无源器件单片集成的各种方法}
   \label{fig_pic_methods}
 \end{figure}
 
+%%%%%%%%%%%%%%%%%%%%
 \subsection{对接再生长}
+%%%%%%%%%%%%%%%%%%%%
 
 对接再生长的方法如图\ref{fig_pic_methods}的第1种方法所示。这种方法的原理是，首先生长一片全部包含有源层的芯片，然后将无源部分的芯层刻蚀掉，最后在这些地方重新生长无源的芯层和包层。这种方法的优点是，每个部分的材料禁带宽度都可以非常准确的控制。同时，它的缺点也是显而易见的。由于有源的芯层和无源的芯层必须对准，而通常的量子阱片芯层仅有几十纳米，所以这给工艺带来了不小的难度。此外，如果需要制作多种不同禁带宽度的材料，就需要进行多次的刻蚀和再生长，大大增加了工艺的复杂度。最后，由于之后生长上去的材料和原先的材料完全不同，所以很可能存在较大的折射率差，这样会导致界面上的光被反射，增加了额外的损耗。近年来，很多人通过改进工艺，大大减小了界面的反射率，这个问题已经不再是一个问题。总而言之，这种方法最直接、最有效，同时在工艺上的难度和复杂度限制了它的发展。
 
+%%%%%%%%%%%%%%%%%%%%
 \subsection{选择性区域生长}
+%%%%%%%%%%%%%%%%%%%%
 
 选择性区域生长的方法如图\ref{fig_pic_methods}的第2种方法所示。这种方法只需要一步生长就可以完成，所以是对对接再生长的改进。这种方法的原理是，在芯片生长芯层之前，先在芯片上生长一层介质膜。然后，在用金属氧化物化学气相沉积（MOCVD）生长芯层的过程中，由于介质膜的影响，材料的厚度和组分会发生变化，导致禁带宽度的改变。只要介质膜生长得当，这种方法可以一次性生长出多个需要的禁带宽度的材料。不过，这种方法对MOCVD生长条件的控制非常苛刻，所以工艺难度非常高。
 
+%%%%%%%%%%%%%%%%%%%%
 \subsection{偏置量子阱}
+%%%%%%%%%%%%%%%%%%%%
 
 图\ref{fig_pic_methods}的第3种方法是偏置量子阱方法。这种方法的原理是，有源层的芯层被生长在无源层的芯层之上，最后在无源区域刻蚀掉有源层的芯层。这种方法比较简单直接，但是缺点似乎更多。首先，它只能将两种禁带宽度的材料集成在一起。然后，由于有源芯层不在最中间，激光器的限制因子会大大下降，这样会大大减小激光器的增益。最后，无源部分不包含量子阱层，所以在制作调制器时，性能会大打折扣。
 
+%%%%%%%%%%%%%%%%%%%%
 \subsection{双量子阱}
+%%%%%%%%%%%%%%%%%%%%
 
 图\ref{fig_pic_methods}的第4种方法是双量子阱方法。显然，该方法是偏置量子阱方法的改进。它在偏置量子阱的基础上，在无源芯层也生长了量子阱。这样可以解决调制器的性能问题。可是这种方法并不能解决偏置量子阱方法的其他问题，例如激光器限制因子仍然比较低等等。
 
+%%%%%%%%%%%%%%%%%%%%
 \subsection{量子阱混杂技术}
+%%%%%%%%%%%%%%%%%%%%
 
 从制作工艺的角度来说，图\ref{fig_pic_methods}的第5种方法所示的量子阱混杂技术可能是最简单的单片集成方法。如图\ref{fig_qwi}所示，对于普通的量子阱材料来说，沿着材料的生长方向看过去，每一层材料的禁带宽度是一种矩形的结构。整个量子阱的禁带宽度是由阱的材料和厚度，以及垒的材料决定的。然后，当我们通过某种方法，将阱和垒的材料进行融合，使量子阱的每一层的禁带宽度变成一个渐变的结构之后，整个材料的禁带宽度就会发生变化（通常是禁带宽度增加）。所以，我们只需要在芯片生长完之后，制作各个部分的器件之前，对调制器和无源波导区域进行量子阱混杂，其中禁带宽度的增加量由混杂的工艺参数决定，这样就可以实线单片集成的效果。
 
-\begin{figure}[!htb]
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.7\textwidth]{./Pictures/qwi.eps}\\
   \caption{量子阱混杂技术示意图}
@@ -214,17 +238,25 @@ As the telecommunications industry enters the twenty-first century the demand fo
 
 然而，只通过一般的退火的方法是不可能达到量子阱混杂的效果的。因为量子阱是十分稳定的，只有在非常高的温度和非常长的时间作用下，才会开始发生混杂现象（此处需要补充一篇文献）。为了让混杂在较低的温度和较短的时间内发生，通常会在芯片的表面或者内部产生一些缺陷。这些缺陷在快速退火的条件下，可以快速扩散到量子阱层，引起阱和垒互相扩散，达到量子阱混杂的目的。
 
+%%%%%%%%%%%%%%%%%%%%
 \subsection{各种单片集成技术的比较}
+%%%%%%%%%%%%%%%%%%%%
 
+待添加。
+
+%%%%%%%%%%%%%%%%%%%%
 \section{量子阱混杂技术回顾}
+%%%%%%%%%%%%%%%%%%%%
 
 量子阱混杂是一个量子阱的阱和垒相互扩散的过程。在这个过程中，随着扩散的不断增强，量子阱的形状和厚度也随之不断变化，从而导致能带的变化。变化之后的能带对应的能量一般来说都是增加的，也就是波长发生蓝移。在一般情况下，量子阱的阱和势垒之间的界面是亚稳态的，在一定的条件下，例如高温下，量子阱的阱和势垒的原子会相互扩散。量子阱混杂的目标不是简单地使阱和势垒相互扩散，而是在整个区域中做选择性的扩散。
 
 已经有很多种方法可以实现量子阱混杂的效果，例如杂质诱导无序（IID） \cite{holonyak1998impurity-IID} ，无杂质空位增强无序（IFVD） \cite{si1998area-IFVD}，光吸收诱导无序（PAID） \cite{mckee1997monolithic-PAID}，离子注入增强扩散\cite{charbonneau1998photonic-implantation}等等。本节将介绍最近几十年中研究过的绝大部分方法，并进行比较。
 
+%%%%%%%%%%%%%%%%%%%%
 \subsection{杂质诱导方法}
+%%%%%%%%%%%%%%%%%%%%
 
-\begin{figure}[!htb]
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.7\textwidth]{./Pictures/iid.eps}\\
   \caption{Zn扩散到AlAs-GaAs超晶格中引起混杂的电镜图片}
@@ -237,20 +269,31 @@ As the telecommunications industry enters the twenty-first century the demand fo
 
 （此处应添加其缺点，不过暂时没看出来）
 
+%%%%%%%%%%%%%%%%%%%%
 \subsection{无杂质空位诱导方法}
+%%%%%%%%%%%%%%%%%%%%
 
+待添加。
+
+%%%%%%%%%%%%%%%%%%%%
+\subsection{低温生长InP方法}
+%%%%%%%%%%%%%%%%%%%%
+待添加。
+
+%%%%%%%%%%%%%%%%%%%%
 \subsection{阳极氧化诱导方法}
+%%%%%%%%%%%%%%%%%%%%
 
 1998年，香港大学的Shu Yuan等人提出了一种在GaAs量子阱芯片上采用阳极氧化实现量子阱混杂的方法\cite{yuan1998anodic}\cite{yuan1998anodicJSTQE}。其工艺设备如图\ref{fig_oxide}所示。首先，GaAs量子阱片被固定在一个开路的50伏脉冲式电源的阳极上。阳极和阴极之间通过导电液传到电流。导电液由乙二醇、磷酸和去离子水用40:20:1的体积比配制而成。芯片的一半由导热胶覆盖，这样一来，只有另一半暴露在导电液中的部分会被氧化。经过几分钟的脉冲电流处理之后，芯片又进行了快速退火处理。最终的测试结果如图\ref{fig_oxide_pl}所示。在芯片没有被氧化的部分，光致发光谱的峰值波长仅仅蓝移了5meV左右，同时强度下降到只剩原来的1/20。而对于氧化过的部分，蓝移达到了44meV，而强度上升到了原来的两倍多。可见，这种方法在获得较大蓝移的同时，还可以增加光致发光谱的强度。
 
-\begin{figure}[!htb]
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.7\textwidth]{./Pictures/oxide.eps}\\
   \caption{阳极氧化诱导量子阱混杂技术的设备示意图}
   \label{fig_oxide}
 \end{figure}
 
-\begin{figure}[!htb]
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.7\textwidth]{./Pictures/oxide_pl.eps}\\
   \caption{混杂前后的光致发光谱测试结果}
@@ -259,27 +302,35 @@ As the telecommunications industry enters the twenty-first century the demand fo
 
 可惜的是，这种方法由于需要非常特殊的实验条件，后来并没有进行广泛研究。这种方法也只能停留在研究光致发光谱蓝移的方向上，并没有应用到任何器件上，也没有在InP量子阱材料上成功实现。尽管如此，人们一直没有忘记这种方法，因为氧化与其他很多方法在原理上不谋而合\cite{dubowski1999enhanced}\cite{liu2012xps}\cite{liu2013chemical}。
 
+%%%%%%%%%%%%%%%%%%%%
 \subsection{光吸收诱导方法}
+%%%%%%%%%%%%%%%%%%%%
 
 1997年，英国格拉斯哥大学的Andrew McKee等人提出了用激光照射实现量子阱混杂的方法\cite{mckee1997monolithic-PAID}。该方法使用Nd:YAG激光器照射芯片的表面。由于Nd:YAG激光器发出的光波长在1064nm左右，介于InP的波长和芯层1550nm波长之间，所以正好可以穿过InP包层直接被芯层吸收，达到类似于加热退火的作用。整个工艺的过程是这样的。首先，芯片的表面会生长一层500nm厚的二氧化硅，既可以作为减反射薄膜，又可以对芯片表面原子起到一定的保护作用。然后，芯片被放在200摄氏度的热盘上，这样既可以提供一个背景温度，减小了Nd:YAG激光器照射所需的能量，又可以防止加热后的芯片过快地将热量往下散发。最后，Nd:YAG激光器输出$5W/mm^2$的光，照射芯片30分钟。该方法可以得到最大160nm的蓝移，这是相当可观的，同时还能保持材料的优良性能。混杂之后的激光器，计算得到的损耗甚至比混杂之前的还要小，这说明该方法不会增加甚至减小材料的损耗。由这种方法制作的无源波导，损耗仅有$5dB/cm$。
 
 虽然这种方法效果很好，但是这种方法的致命缺陷在于，长时间的照射会让空间分辨率变得很差。2004年，美国利哈伊大学的Boon Siew Ooi等人提出了采用脉冲光吸收的新方法\cite{ooi2004multiple}。该方法采用一个Q调制的Nd:YAG激光器（10Hz，2.8-3.9$mJ/mm^2$，1-10分钟）照射芯片，然后再进行快速退火（625摄氏度，120秒）的方法。显然这种方法与采用连续Nd:YAG激光器照射的方法相比，原理是不同的。虽然波长一样，但是它产生的光只能被芯片表层的InGaAs吸收，并且在它的表面产生缺陷。这层缺陷在之后的快速退火中往下扩散，达到混杂的目的。这种方法制作的芯片除了有连续激光器照射方法的优点之外，其空间分辨率达到了2.5um，完全达到了单片集成的要求。
 
+%%%%%%%%%%%%%%%%%%%%
 \subsection{等离子体轰击方法}
+%%%%%%%%%%%%%%%%%%%%
 
 2002年，新加坡南阳理工大学的Ting Mei教授团队提出了用等离子体刻蚀机和快速退火的实现量子阱混杂的方法\cite{djie2002high}。该方法首先利用等离子体刻蚀机形成的氩气等离子体轰击芯片的表面，形成一层非常薄（约10nm）的缺陷层。然后，在快速退火的作用下，这层缺陷往下扩散到量子阱层，促进量子阱的阱和垒的互相融合，达到量子阱混杂的目的。与其他的方法相比，这种方法最大的优点在于，我们不需要为了量子阱混杂购买额外的设备，因为等离子体刻蚀机是刻蚀芯片必须的设备，而快速退火也会在制作电极的欧姆接触时用到。而且，其工艺步骤非常简单，只需要等离子体轰击和快速退火两步就可以完成。如果需要对芯片做选择性的量子阱混杂，只需要在不做混杂的区域覆盖一层光刻胶或者二氧化硅掩膜，用来阻挡氩气等离子体的轰击就可以实现。2005年，该团队报道了利用这个方法制作的延长腔激光器\cite{djie2005plasma}，也是至今为止唯一报道的用等离子体轰击方法制作的有源和无源单片集成的器件。很有意思的是，他们还发现了芯片表面的掺杂情况会对量子阱混杂的效果产生很大影响\cite{xu2009inductively}。
 
 虽然这种方法具有工艺简单，成本低，效果好等优点，并且已经有了延长腔激光器这样的简单的集成应用，但是人们发现它的可重复性存在很大的问题。2011年，浙江大学的彭盛华硕士重复了上面的实验\cite{peng2011argon}，其中所用的等离子体刻蚀机与南阳理工大学的刻蚀机是同一型号的（Oxford ICP 100）。在类似的工艺参数条件下他们发现，尽管材料的禁带宽度也可以蓝移100nm以上，但是光致发光谱的强度下降了一半左右。当他们把氩气等离子体换成氮气之后，同样发现光致发光谱下降了很多\cite{peng2009nitrogen-nitrogen}。用这种方法制作的无源波导测试得到的损耗达到了$68dB/cm$\cite{zhang2010optical-waveguide_test}，完全达不到无缘器件集成的要求。所以，这种方法只有在蓝移50nm左右的情况下可以做得较好。或者在没有上包层的芯片上做，然后再生长上包层，这样又大大增加了工艺的复杂度。总的来说，用等离子体轰击方法实现量子阱混杂的方法还有待进一步的研究。
 
+%%%%%%%%%%%%%%%%%%%%
 \subsection{溅射轰击方法}
+%%%%%%%%%%%%%%%%%%%%
 
 溅射轰击方法与等离子体轰击方法的原理非常相似。首先，芯片在溅射的过程中，在表面产生一层很薄的缺陷层。然后，这层缺陷在快速退火的条件下快速运动到量子阱区域，促进阱和垒的互相扩散，达到量子阱混杂的目的。这种方法也不需要购买额外的设备，因为溅射机是制作激光器电极的设备。如果需要对芯片做选择性的量子阱混杂，只需要在不做混杂的区域覆盖一层光刻胶或者二氧化硅掩膜，这些特点与等离子体轰击方法完全相同。不同的地方在于溅射的靶的材料。1998年，英国格拉斯哥大学的John Marsh教授团队提出了利用溅射二氧化硅和快速退火的方法实现量子阱混杂的效果\cite{mcdougall1998monolithic}。2014年，浙江大学的朱宏力博士提出了溅射氧化铝\cite{zhu2014quantum}和氮化硅\cite{zhu2014bandgap}实现量子阱混杂的技术。
 
+%%%%%%%%%%%%%%%%%%%%
 \subsection{离子注入方法}
+%%%%%%%%%%%%%%%%%%%%
 
 离子注入方法由离子注入和快速退火两个步骤组成。首先，特定种类的离子在非常高能量的离子注入机的加速下，直接打入芯片的内部。然后，在快速退火的作用下，这些离子促进了量子阱中的阱和垒的融合，最终达到改变禁带宽度的目的。
 
-\begin{figure}[!htb]
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.7\textwidth]{./Pictures/implantation.eps}\\
   \caption{离子注入技术示意图}
@@ -290,14 +341,14 @@ As the telecommunications industry enters the twenty-first century the demand fo
 
 离子注入方法制作的无源波导的性能甚至比量子阱混杂之前的性能还要好。如图\ref{fig_implantation_wg_test}所示，量子阱混杂之后，波导的禁带宽度相比于未混杂的波导，蓝移了90nm左右。计算得到的损耗如图\ref{fig_implantation_wg_loss}所示。对于未混杂的波导，在透明传输的波长区域，比如1580nm，波导的损耗大约是$8cm^{-1}$。对应到混杂之后的波导的1490nm，波导的损耗只有$5cm^{-1}$左右。也就是说，经过离子注入方法制作的无源波导，损耗可以比未做处理之前还要低。
 
-\begin{figure}[!htb]
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.7\textwidth]{./Pictures/implantation_wg_test.eps}\\
   \caption{测试得到的量子阱混杂和未混杂波导的透射光谱}
   \label{fig_implantation_wg_test}
 \end{figure}
 
-\begin{figure}[!htb]
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.7\textwidth]{./Pictures/implantation_wg_loss.eps}\\
   \caption{由透射光谱计算得到的损耗}
@@ -306,7 +357,7 @@ As the telecommunications industry enters the twenty-first century the demand fo
 
 利用离子注入技术制作的激光器的IV特性曲线如图\ref{fig_implantation_laser}所示。从图中可以看出，在量子阱混杂前后，两种激光器的IV曲线是非常相似的。在激光器工作的第一象限，两条曲线基本重合在一起。这说明，离子注入技术不会改变材料的电特性。
 
-\begin{figure}[!htb]
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.7\textwidth]{./Pictures/implantation_laser.eps}\\
   \caption{由离子注入方法制作的激光器的IV特性曲线}
@@ -315,21 +366,27 @@ As the telecommunications industry enters the twenty-first century the demand fo
 
 由于离子注入技术相对成熟，性能也很好，人们已经利用该技术制作了非常复杂的单片集成器件。加州大学圣巴巴拉校区的Larry Coldren教授团队报道了一个$8\times8$InP单片集成波长可调路由器\cite{nicholes20108}，也是当时世界上最复杂的单片集成光器件，实物图如图\ref{fig_motor}所示。该器件需要集成8个取样光栅分布式布拉格反射激光器（SGDBR），8个波长转换器以及1个阵列波导光栅等器件。因为所有的器件都需要对部分或全部的区域进行量子阱混杂处理，在每个器件制作之前，芯片的大部分区域都采用了离子注入技术进行处理，材料的禁带宽度从原先的1545nm蓝移到了1420nm。
 
-\begin{figure}[!htb]
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.7\textwidth]{./Pictures/motor.eps}\\
   \caption{$8\times8$InP单片集成波长可调路由器}
   \label{fig_motor}
 \end{figure}
 
+%%%%%%%%%%%%%%%%%%%%
 \subsection{各种量子阱混杂方法的比较}
+%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
 \chapter{量子阱混杂技术的理论模拟}
+%%%%%%%%%%%%%%%%%%%%
 
 在量子阱混杂工艺研究不断取得进展的同时，人们也做了很多量子阱混杂的理论模拟方面的工作。这些模拟让人们更好地理解了量子阱混杂的机理，并指导人们在工艺上进一步优化。量子阱混杂的理论模拟最核心的问题是计算混杂之后的能带结构。也就是说，在原有的量子阱的基础上，通过加入混杂的工艺参数作为变量，计算得到混杂之后的能带结构。有了能带结构之后，就可以进一步计算材料的吸收系数，增益，折射率等等。最后，就可以计算出量子阱混杂对整个光器件的影响。这一章将详细介绍量子阱混杂的能带结构的计算方法。
 
-\section{量子阱能带计算}
+%%%%%%%%%%%%%%%%%%%%
+\section{薛定谔方程的数值解法}
+%%%%%%%%%%%%%%%%%%%%
 
 在半导体中，电子运动的状态可以通过解薛定谔方程得到。
 
@@ -340,7 +397,7 @@ As the telecommunications industry enters the twenty-first century the demand fo
         = E\varphi(z)
 \end{equation}
 
-其中，$m_\perp(z)$是导带或者价带的有效质量。$V(z)$是导带或者价带的势函数。(需要结合量子力学的课本重写)
+其中，$m_\perp(z)$是电子或者空穴的有效质量。$V(z)$是导带或者价带的势函数。(需要结合量子力学的课本重写)
 
 然后，我们采用包络函数近似（？）对上面的方程进行简化。在这个近似中，波函数的时间和空间分量可以分离开来，得到如下的函数式
 
@@ -358,7 +415,7 @@ As the telecommunications industry enters the twenty-first century the demand fo
     \psi(x) = A_j \exp [i k_j (x-x_j)] + B_j \exp [-i k_j (x-x_j)]
 \end{equation}
 
-\begin{figure}[!htb]
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.7\textwidth]{./Pictures/tmm.eps}\\
   \caption{传输矩阵法对势函数和有效质量的离散化，实线代表精确值，虚线代表离散值}
@@ -407,7 +464,7 @@ As the telecommunications industry enters the twenty-first century the demand fo
 
 上面的方程是一个关于E的复数方程，它的所有解，从小到大依次就是每一个能级，代入到前面的波动方程\ref{eq_effective_mass_solution}中，就可以得到每个x点上的波函数。
 
-为了验证程序的正确性，我们选择了文献中的AlGaAs-GaAs量子阱结构\cite{jonsson1990solving}，其势能和有效质量如表\ref{tmm_sample}所示。由于导带和价带的能级计算方法完全一样，这里只给出导带的计算结果，如表所示。我们将文献中的传输矩阵法\cite{jonsson1990solving}、有限元法\cite{nakamura1989finite}的结果和我们的结果作比较，发现结果基本上是一致的，误差最大仅有0.03\%，说明了该程序是正确的。存在的一些微小偏差主要来源于对x轴的取值不同。x轴的离散化的步长和整个x轴的长度，会对能级的结果产生细微的影响。此外，我们还计算了前四个能级对应的波函数振幅的平方，并且与势函数叠加在一起，如图\ref{fig_wave1}-\ref{fig_wave4}所示。结果再一次验证了程序的正确性。
+为了验证程序的正确性，我们选择了文献中的AlGaAs-GaAs量子阱结构\cite{jonsson1990solving}，其势能和有效质量如表\ref{tmm_sample}所示。由于导带和价带的能级计算方法完全一样，这里只给出导带的计算结果，如表所示。我们将文献中的传输矩阵法\cite{jonsson1990solving}、有限元法\cite{nakamura1989finite}的结果和我们的结果作比较，发现结果基本上是一致的，误差最大仅有0.03\%，说明了该程序是正确的。存在的一些微小偏差主要来源于对x轴的取值不同。x轴的离散化的步长和整个x轴的长度，会对能级的结果产生细微的影响。此外，我们还计算了前四个能级对应的波函数振幅的平方，并且与势函数叠加在一起，如图\ref{fig_waves}所示。结果再一次验证了程序的正确性。
 
 \begin{table}[!t]
     \zihao{5}
@@ -440,106 +497,126 @@ As the telecommunications industry enters the twenty-first century the demand fo
     \end{tabular}
 \end{table}
 
-\begin{figure}[!htb]
+\begin{figure}[!h]
   \centering
-  \includegraphics[width=0.7\textwidth]{./Pictures/wave1.eps}\\
-  \caption{势函数以及第一能级波函数振幅的平方}
-  \label{fig_wave1}
+  \includegraphics[width=1.0\textwidth]{./Pictures/waves.eps}\\
+  \caption{势函数以及前四个能级波函数振幅的平方}
+  \label{fig_waves}
 \end{figure}
 
-\begin{figure}[!htb]
+%%%%%%%%%%%%%%%%%%%%
+\section{III-V量子阱的能带结构}
+%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[!h]
   \centering
-  \includegraphics[width=0.7\textwidth]{./Pictures/wave2.eps}\\
-  \caption{势函数以及第二能级波函数振幅的平方}
-  \label{fig_wave2}
+  \includegraphics[width=0.7\textwidth]{./Pictures/bands.eps}\\
+  \caption{III-V半导体在布里渊区的$\Gamma$点附近的导带和价带示意图}
+  \label{fig_bands}
 \end{figure}
 
-\begin{figure}[!htb]
-  \centering
-  \includegraphics[width=0.7\textwidth]{./Pictures/wave3.eps}\\
-  \caption{势函数以及第三能级波函数振幅的平方}
-  \label{fig_wave3}
-\end{figure}
-
-\begin{figure}[!htb]
-  \centering
-  \includegraphics[width=0.7\textwidth]{./Pictures/wave4.eps}\\
-  \caption{势函数以及第四能级波函数振幅的平方}
-  \label{fig_wave4}
-\end{figure}
-
-\section{扩散模型}
-
-Interdiffusion of atoms across the heterointerface alters the composition profile across the QW structure. Mathematical models are needed to describe and calculate the changes in the composition profile as a function of the duration of interdiffusion. In the section, we adopt the notation $A_{x}B_{1-x}C_{y}D_{1-y}$ to denote the chemical formula of a III-V semiconductor material, where A and B represent the Group III atoms, and C and D represent the Group V atoms respectively. After interdiffusion the mole fractions of Group III and V atoms are function of position along the direction of crystal growth (the $z$-direction) and are denoted by $w(z)$ and $v(z)$.
-
-The diffusion process is usually described by the Fick's Second Law in the direction of crystal growth
+对于III-V量子阱材料来说，价带的能带结构比导带要复杂一些，如图\ref{fig_bands}。通常，在布里渊区的中心附近，存在两个重叠的价带，以及在不远处的第三条能带。前面两条能带分别叫做重空穴（HH）和轻空穴（LH）带。随着波矢向远离$\Gamma$点方向运动时，重空穴带比轻空穴带向下弯曲的更慢一些，也就是对应了更大的有效质量，所以它被成为重空穴带。第三条能带叫做自旋分裂（SO）能带。也就是说，III-V材料通常包含三条价带和一条导带。为了计算这些能带，最常用也是最简单的方法是采用$k\cdot p$微扰理论，推导出计算这些能带的哈密顿算子。1955年，Luttinger和Kohn得到了关于三个价带的$6\times6$哈密顿算子，以及其中两个价带（HH和LH）的$4\times4$哈密顿算子\cite{Luttinger1955Motion}。1966年Pidgeon和Brown提出了包含导带的$8\times8$哈密顿算子\cite{Pidgeon1966Interband}。这里，我们给出Luttinger和Kohn的$6\times6$哈密顿算子如下：
 
 \begin{equation}
-  \frac{\partial{C}}{\partial{t}}=D\frac{\partial^2{C}}{\partial{z^2}}
+    \label{eq_6times6}
+    H = \left[\begin{array}{cccccc}P+Q & 0 & -S & R & (1/\sqrt{2})S & \sqrt{2}R \\0 & P+Q & -R\dag & -S^\dag & -\sqrt{2}R^\dag & (1/\sqrt{2})S^\dag \\-S^\dag & -R & P-Q & 0 & \sqrt{2}Q & \sqrt{3/2}S \\R^\dag & -S & 0 & P-Q & \sqrt{3/2}S^\dag & \sqrt{2}Q \\(1/\sqrt{2})S^\dag & -\sqrt{2}R & \sqrt{2}Q & \sqrt{3/2}S & P+\Delta_{SO} & 0 \\\sqrt{2}R^\dag & (1/\sqrt{2})S & \sqrt{3/2}S\dag & \sqrt{2}Q & 0 & P+\Delta_{SO}\end{array}\right]
+\end{equation}
+其中
+
+\begin{equation}
+    P = \left( \frac{h^2}{2m_0} \right) \gamma_1 (k^2_x + k^2_y + k^2_z)
+\end{equation}
+\begin{equation}
+    Q = \left( \frac{h^2}{2m_0} \right) \gamma_2 (k^2_x + k^2_y - 2k^2_z)
+\end{equation}
+\begin{equation}
+    R = \left( \frac{h^2}{2m_0} \right) \sqrt{3} [-\gamma_2 (k^2_x - k^2_y) + 2i \gamma_3 k_x k_y]
+\end{equation}
+\begin{equation}
+    S = \left( \frac{h^2}{2m_0} \right) 2 \sqrt{3} \gamma_3 k_z (k_x - ik_y)
+\end{equation}
+其中$\gamma_{1,2,3}$是Luttinger参数，$\Delta_{SO}$是自旋轨道分裂能量。其中的参数很容易在各种书籍或文章中查到，这里不再赘述。根据以上方程，我们就可以计算出三条价带关于波失的关系。这里考虑一种特殊情况，在布里渊区的中心，我们可以将上面的算子进一步简化，即$k_x=k_y=k_z=0$时，算子变成了
+
+\begin{equation}
+    H(k=0) = \left[\begin{array}{cccccc}0 & 0 & 0 & 0 & 0 & 0 \\0 & 0 & 0 & 0 & 0 & 0 \\0 & 0 & 0 & 0 & 0 & 0 \\0 & 0 & 0 & 0 & 0 & 0 \\0 & 0 & 0 & 0 & \Delta_{SO} & 0 \\0 & 0 & 0 & 0 & 0 & \Delta_{SO}\end{array}\right]
+\end{equation}
+上面矩阵的含义是，当k=0时，导带和价带的能量E=0，并且自旋轨道分裂能量与他们的能力差为$\Delta_{SO}$。当我们计算量子阱时，正需要考虑这种情况。
+
+此外，我们还需要考虑应变对价带的影响。应变在III-V半导体中表现为6个分量：$\epsilon_{xx}$，$\epsilon_{yy}$，$\epsilon_{zz}$，$\epsilon_{xy}$，$\epsilon_{zx}$和$\epsilon_{yz}$。他们对$6\times6$哈密顿算子的影响如下面的方程所示\cite{Calvin1992Spin}：
+
+\begin{equation}
+    P \rightarrow P + P_{\epsilon} ,  P_{\epsilon} = - a_v (\epsilon_{xx} + \epsilon_{yy} + \epsilon_{zz})
+\end{equation}
+\begin{equation}
+    Q \rightarrow Q + Q_{\epsilon} ,  Q_{\epsilon} = - \frac{b}{2} (\epsilon_{xx} + \epsilon_{yy} -2 \epsilon_{zz})
+\end{equation}
+\begin{equation}
+    R \rightarrow R + R_{\epsilon} ,  R_{\epsilon} = \frac{\sqrt{3}}{2} b (\epsilon_{xx} - \epsilon_{yy}) - i d \epsilon_{xy})
+\end{equation}
+\begin{equation}
+    S \rightarrow S + S_{\epsilon} ,  S_{\epsilon} = - d (\epsilon_{zx} -i \epsilon_{yz})
+\end{equation}
+其中$a_v$，$b$，$d$是各个方向上的形变势能系数。在实际的应变量子阱材料中，随着材料在z方向外延的过程中发生了应变，所以各个方向的分量可以表示为
+
+\begin{equation}
+    \epsilon_{xy} = \epsilon_{yz} = \epsilon_{zx} = 0
+\end{equation}
+\begin{equation}
+    \epsilon_{xx} = \epsilon_{yy} = \frac{a_0 - a_{latt}}{a_{latt}} / a_{latt}
+\end{equation}
+\begin{equation}
+    \epsilon_{zz} = - \frac{2 C_{12}}{C_{11}}  \epsilon_{xx}
+\end{equation}
+其中$C_{11}$和$C_{12}$是弹性刚度系数，$a_0$是基底的晶格常数（通常都是晶格匹配的）。此时，我们再回过头来看$6\times6$哈密顿算子在k=0时的情况，他已经变成
+
+\begin{equation}
+    H = \left[\begin{array}{cccccc}P_{\epsilon}+Q_{\epsilon} & 0 & 0 & 0 & 0 & 0 \\0 & P_{\epsilon}+Q_{\epsilon} & 0 & 0 & 0 & 0 \\0 & 0 & P_{\epsilon}-Q_{\epsilon} & 0 & \sqrt{2}Q_{\epsilon} & 0 \\0 & 0 & 0 & P_{\epsilon}-Q_{\epsilon} & 0 & \sqrt{2}Q_{\epsilon} \\0 & 0 & \sqrt{2}Q_{\epsilon} & 0 & Q_{\epsilon}+\Delta_{SO} & 0 \\0 & 0 & 0 & \sqrt{2}Q_{\epsilon} & 0 & \Delta_{SO}\end{array}\right]
+\end{equation}
+这个方程比没有应变的情况要复杂的多。经过计算，我们可以得到k=0时三个价带在布里渊区中心的能量分别为
+
+\begin{equation}
+    E_{HH}(0) = P_{\epsilon} + Q_{\epsilon}
+\end{equation}
+\begin{equation}
+    E_{LH}(0) = P_{\epsilon} - \frac{1}{2} \left( Q_{\epsilon} - \Delta_{SO} + \sqrt{\Delta^2_{SO} + 2 \Delta^2_{SO} Q_{\epsilon} + 9 Q^2_{\epsilon}} \right)
+\end{equation}
+\begin{equation}
+    E_{SO}(0) = P_{\epsilon} - \frac{1}{2} \left( Q_{\epsilon} - \Delta_{SO} - \sqrt{\Delta^2_{SO} + 2 \Delta^2_{SO} Q_{\epsilon} + 9 Q^2_{\epsilon}} \right)
 \end{equation}
 
-where $C$ denotes the concentration of the atoms and $D$ is the diffusion coefficient. The diffusion coefficient of the atoms is usually assumed to be identical in the quantum well. The interdiffusion process is characterized by a diffusion length $L_d$, which is defined as $L_d=\sqrt{Dt}$, where $D$ is the diffusion coefficient and $t$ is the annealing time of the thermal processing. Consider a single $In_{wx}Ga_{1-wx}As_{wy}P_{1-wy}/In_{bx}Ga_{1-bx}As_{by}P_{1-by}$ quantum well, the composition profile of In and As in this QW after interdiffusion are given by
-
-\begin{eqnarray}
-    w(z)&=&wx-\frac{bx-wx}{2} \notag\\
-        &&\times \biggr[2-\textrm{erf}\biggr(\frac{L_z+2z}{4L_d^{III}}\biggr)
-        -\textrm{erf}\biggr(\frac{L_z-2z}{4L_d^{III}}\biggr)\biggr]
-\end{eqnarray}
-
-\begin{eqnarray}
-    v(z)&=&wy-\frac{by-wy}{2} \notag\\
-        &&\times \biggr[2-\textrm{erf}\biggr(\frac{L_z+2z}{4L_d^{V}}\biggr)
-        -\textrm{erf}\biggr(\frac{L_z-2z}{4L_d^{V}}\biggr)\biggr]
-\end{eqnarray}
-
-In this case, interdiffusion can occur on both group III and V sublattices, which are characterized by their diffusion lengths $L_d^{III}$ and $L_d^V$, respectively. The diffusion length ratio, i.e., $k=L_d^V/L_d^{III}$, depends on the details of interdiffusion process and is still an open question which requires further studies.
-
-
-\section{能带结构计算}
+最后，我们考虑导带和价带的偏置比，就可以得打导带和价带的势能函数方程
 
 \begin{equation}
     \label{V_c}
-    V_c(z)
-        = Q_c Eg(z) - (1-Q_c)S_\perp(z)
+    V_c(z) = Q_c E_g(z) - (1-Q_c)S_\perp(z)
 \end{equation}
-
 \begin{equation}
     \label{V_HH}
-    V_{HH}(z)
-        = (1-Q_c)[Eg(z) - S_\perp(z)] + S_\parallel(z)
+    V_{HH}(z) = (1-Q_c)[E_g(z) - S_\perp(z)] + S_\parallel(z)
 \end{equation}
-
 \begin{eqnarray}
     \label{V_LH}
-    V_{LH}(z)&=& (1-Q_c)[Eg(z) - S_\perp(z)] \notag\\
+    V_{LH}(z)&=& (1-Q_c)[E_g(z) - S_\perp(z)] \notag\\
     && +0.5[S_\parallel(z) + \Delta_0(z)] \notag\\
     && -0.5 \sqrt{9S_\parallel^2(z)-2S_\parallel^2(z)\Delta_0(z)+\Delta_0^2(z)}
 \end{eqnarray}
-
-The calculation of the potential energy has take consideration the strain effect of the quantum well materials by Equation \ref{S_perp}-\ref{epsilon}. All the material parameters for the numerical calculation can be obtained from Table \ref{parametertable}.
-
+其中
 \begin{equation}
     \label{S_perp}
-    S_\perp(z)
-        = -2a_v(z)[1-\frac{C_{12}(z)}{C_{11}(z)}] \epsilon(z)
+    S_\perp(z) = -2a_v(z)[1-\frac{C_{12}(z)}{C_{11}(z)}] \epsilon(z)
 \end{equation}
-
 \begin{equation}\label{S_parallel}
-    S_\parallel(z)
-        = -b(z)[1+\frac{2C_{12}(z)}{C_{11}(z)}] \epsilon(z)
+    S_\parallel(z) = -b(z)[1+\frac{2C_{12}(z)}{C_{11}(z)}] \epsilon(z)
 \end{equation}
-
 \begin{equation}\label{a_v}
-    a_v(z)
-        = -\frac{1}{3}[C_{11}(z)+2C_{12}(z)] \frac{dEg}{dp}(z)
+    a_v(z) = -\frac{1}{3}[C_{11}(z)+2C_{12}(z)] \frac{dE_g}{dp}(z)
 \end{equation}
-
 \begin{equation}\label{epsilon}
-    \epsilon(z)
-        = \frac{a_{InP}(z)-a(z)}{a(z)}
+    \epsilon(z) = \frac{a_{InP}(z)-a(z)}{a(z)}
 \end{equation}
+方程中的参数已经在表\ref{parametertable}中给出。如无特别说明，本章中采用的量子阱均采用表\ref{RedShiftSample}中的结构。
 
-{
+
 \begin{table}[!htb]
     \zihao{6}
     \caption{室温条件下（300K）InGaAsP量子阱材料的参数}
@@ -573,9 +650,7 @@ The calculation of the potential energy has take consideration the strain effect
         \hline
     \end{tabular}
 \end{table}
-}
 
-To show the validity of the theoretical model, I adopt the data by Nanyang Technology University with the same method of argon plasma-induced QWI \cite{redshift}. The layer structure of samples used in the experiment is shown in Table \ref{RedShiftSample}. Figure \ref{ex_redshift} shows the PL spectra of one InP cap sample before plasma exposure and after plasma exposure followed by several rapid thermal annealing (RTA) process. The result shows that after argon plasma exposure, both the blueshift and redshift of the bandgap can be obtained by controlling the temperature of RTA.
 
 \begin{table}[!t]
     \zihao{5}
@@ -597,74 +672,104 @@ To show the validity of the theoretical model, I adopt the data by Nanyang Techn
     \end{tabular}
 \end{table}
 
-\begin{figure}[!t]
-    \centering
-    \includegraphics[width=0.7\textwidth]{./Pictures/exp_red.eps}
-    \caption{PL spectra for one InP cap sample before plasma exposure and after plasma exposure followed by annealing at (i) 580$^\circ$C, (ii) 600$^\circ$C, (iii) 620$^\circ$C, (iv) 650$^\circ$C, (v) 700$^\circ$C.}
-    \label{ex_redshift}
-\end{figure}
+%%%%%%%%%%%%%%%%%%%%
+\section{扩散模型}
+%%%%%%%%%%%%%%%%%%%%
 
-To interpret the above observations of bandgap modification, the wavelength shift of the interdiffused QW structure was calculated using my theoretical model. Figure \ref{my_redshift} shows the calculated PL peak wavelength shift as a function of group III diffusion length under different k parameters. It can be seen that, in this QW structure, an observable redshift can be obtained only when k$<$0.63 roughly; i.e., the group III sublattice must interdiffuse about twice as fast as the group V sublattice.
+量子阱混杂的过程是一个原子扩散的过程。为了模拟这个过程，我们需要一个数学模型用来表示材料组分和扩散程度之间的关系。在这里，我们采用$A_{x}B_{1-x}C_{y}D_{1-y}$这样的标记来表示III-V族半导体化合物，其中A和B代表第III族的原子，C和D代表第V族原子，x和y分别代表相应元素的摩尔比。量子阱混杂之后，第III族和第V族的原子摩尔比可以表示为两个与晶体生长方向（$z$方向）相关的函数，即$w(z)$和$v(z)$。
 
-\begin{figure}[!t]
-    \centering
-    \includegraphics[width=0.7\textwidth]{./Pictures/red.eps}
-    \caption{The calculated wavelength shift of the ground state transition as a function of the group III diffusion length under different k parameters.}
-    \label{my_redshift}
-\end{figure}
-
-\section{材料的其他参数的计算}
-
-量子限制斯塔克效应。
+半导体中的扩散过程可以用沿着晶体生长方向的菲克第二定律来表示，即
 
 \begin{equation}
-    \label{QCSE}
-    \frac{-h^2}{2}
-    \frac{d}{dz}
-    \frac{1}{m_\perp^*(z)}
-    \frac{d\varphi(z)}{dz}
-    +[V(z)+zeE]\varphi(z)
-        = E\varphi(z)
+  \frac{\partial{C}}{\partial{t}}=D\frac{\partial^2{C}}{\partial{z^2}}
 \end{equation}
 
-
-增益。
-
-\begin{eqnarray}
-    g(\hbar\omega) &=& \frac{2 m_r \omega}{n_{eff} c \varepsilon_0 \pi \hbar^2 L_z}
-        \sum_{n,m} \int_0^\infty dE_\parallel |e\cdot M_{cv}(E_\parallel)|^2 \notag\\
-    && \times \frac{\frac{\hbar}{\pi \tau_{in}}}
-        {(E_{en}-E_{hm}+E_\parallel-\hbar\omega)^2+(\frac{\hbar}{\pi \tau_{in}})^2} \notag\\
-    && \times [f_c^n(E_\parallel)-f_v^m(E_\parallel)]
-\end{eqnarray}
-
-折射率。
+其中$C$表示材料组分，$D$表示扩散系数。一般来说，扩散系数在整个量子阱中被视为常量。在这里，我们需要引入一个用来表示扩散程度的系数，即扩散长度$L_d$。扩散长度的定义为$L_d=\sqrt{Dt}$，其中$D$是扩散系数，$t$是加热过程的时间。假设一个$In_{wx}Ga_{1-wx}As_{wy}P_{1-wy}/In_{bx}Ga_{1-bx}As_{by}P_{1-by}$的单量子阱结构，量子阱混杂之后In和As的的组分函数可以分别表示为
 
 \begin{eqnarray}
-    \Delta n(\hbar\omega) &=& \frac{m_r}{n_{eff} c \varepsilon_0 \pi \hbar^2 L_z}
-        \sum_{n,m} \int_0^\infty dE_\parallel |e\cdot M_{cv}(E_\parallel)|^2 \notag\\
-    && \times \frac{E_{en}-E_{hm}+E_\parallel-\hbar\omega}
-        {(E_{en}-E_{hm}+E_\parallel-\hbar\omega)^2+(\frac{\hbar}{\pi \tau_{in}})^2} \notag\\
-    && \times [f_c^n(E_\parallel)-f_v^m(E_\parallel)]
+    w(z)&=&wx-\frac{bx-wx}{2} \times \biggr[2-\textrm{erf}\biggr(\frac{L_z+2z}{4L_d^{III}}\biggr) -\textrm{erf}\biggr(\frac{L_z-2z}{4L_d^{III}}\biggr)\biggr]
 \end{eqnarray}
 
+\begin{eqnarray}
+    v(z)&=&wy-\frac{by-wy}{2} \times \biggr[2-\textrm{erf}\biggr(\frac{L_z+2z}{4L_d^{V}}\biggr) -\textrm{erf}\biggr(\frac{L_z-2z}{4L_d^{V}}\biggr)\biggr]
+\end{eqnarray}
 
-%%%%%%%%%%%%%%%%%%%%%%
+在这种情况下，扩散可以同时在第III族和第V族的元素中进行，分别对应了$L_d^{III}$和$L_d^V$两个扩散长度。他们的比值$k=L_d^V/L_d^{III}$是一个影响量子阱混杂效果的重要因素。同理，对于$Al_{wx}Ga_{1-wx}As/Al_{bx}Ga_{1-bx}As$量子阱来说，由于不存在第V族元素的扩散，k值永远等于0。
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=1.0\textwidth]{./Pictures/composition.eps}
+    \caption{In、Ga、As、P元素在不同的扩散长度条件下的组分分布}
+    \label{fig_composition}
+\end{figure}
+
+图\ref{fig_composition}表示In、Ga、As、P元素在不同的扩散长度条件下的组分分布。当扩散长度为0时，量子阱不发生扩散，也就是不发生混杂的元素组分分布。当扩散长度为0.5nm时，元素组分仅在阱的中间位置与扩散之前的相同。当扩散长度为2.5nm时，整个阱的组分都已经发生很大变化。当扩散长度为5nm时，阱和垒的组分基本没有区别，呈现一条水平线。
+
+%%%%%%%%%%%%%%%%%%%%
+\section{扩散长度对能带结构的影响}
+%%%%%%%%%%%%%%%%%%%%
+
+为了讨论扩散长度对量子阱混杂的影响，我们假设扩散的k值始终等于1，这样就排除了k值的干扰，而且III族和V族的元素具有相同的扩散长度。我们选择了扩散长度从0到1nm，间隔0.1nm的11种情况，分别计算了导带和两条价带的最低能级的能量，如图\ref{fig_Ld_1}所示。左边的图表示In的组分变化，其实也可以看成体材料的势函数沿着材料生长方向的分布。显然，随着扩散长度的增加，量子阱的势函数的底部在不断往上抬升，这导致了导带、重空穴带和轻空穴带能级的上升，这一点从右边的图就可以清楚的看出来。
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=1.0\textwidth]{./Pictures/Ld_1.eps}
+    \caption{InP量子阱在不同扩散长度的条件下，导带和价带的能量变化}
+    \label{fig_Ld_1}
+\end{figure}
+
+在这里，我们还可以试图将势函数的底部的能量去掉，这样一来，所有的势函数都将拥有同样的底部能量，如图\ref{fig_Ld_2}所示。这一次计算得到的能带的能量变化与之前的完全不同。从右边的图可以看到，在扩散长度小于0.5nm的时候，所有能带的能量随着扩散长度的增加而增加，这个趋势和前面是相同的。这里势函数的底部能量并没有发生变化，引起能级上升的主要因素是阱宽的变化。随着扩散长度的增加，量子阱的等效阱宽在不断减小，从而导致了量子阱能级的升高。在扩散长度大于0.5nm的时候，由于垒的势能急剧下降，导致了所有能级的能量也随之减小了。
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=1.0\textwidth]{./Pictures/Ld_2.eps}
+    \caption{修正势函数之后的能带与扩散长度的变化关系}
+    \label{fig_Ld_2}
+\end{figure}
+
+综合上述两种情况，在扩散长度比较小的情况下，阱的势能的底部还没有发生变化，这时主导能级变化的因素是等效阱宽的改变。在上面的情况中，随着扩散长度的增加，等效阱宽随之减小，这样便提升了导带和价带的能级。当扩散长度比较大时，阱的势能底部开始向上提升，垒的势能也急剧下降，他们共同导致了量子阱能级的变化。在上面的情况中，势能底的上升占据了主导地位，导致了量子阱能级随着扩散长度的增加而升高。
+
+%%%%%%%%%%%%%%%%%%%%
+\section{k值对能带结构的影响}
+%%%%%%%%%%%%%%%%%%%%
+
+除了扩散长度对蓝移会产生影响之外，k值也会影响蓝移的大小，甚至是方向。我们选择了k值为0、0.25、0.35、0.63、1的情况，分别计算C-HH和C-LH的波长变化，如图\ref{fig_k}左图所示。我们可以看到，当k=1时，对应的情况与上一节的情况完全相同，无论是C-HH还是C-LH的波长都一直往短波方向移动。当扩散长度达到10nm时，蓝移可以达到200nm以上。然而，随着k值的减小，最后能达到的蓝移也在随时减小。对于0.35和0.63两条曲线，在扩散长度大约小于2nm的时候，波长随着扩散长度的增加而增加。之后开始向短波方向移动，并且在扩散长度小于4nm的时候，仍然比一开始的波长要长。在4nm之后，波长继续往短波方向移动，最终达到约100nm左右的蓝移。对于k=0的情况，随着扩散长度的增加，波长一直向着长波方向移动，并且在最后达到约100nm的红移。综上所述，k值越小，最后能得到的最大蓝移越小，甚至可以出现红移的现象。当k值小于一定值时，波长会出现先红移，后蓝移的现象。而k值足够小的情况下，波长会一直往红移方向移动。可见，为了在单片集成中达到尽可能大的蓝移，除了扩散长度尽可能大之外，必须尽量提高k值，即尽量加剧V族元素的扩散。如果V族元素的扩散不明显的时候，也有可能发生不蓝移，甚至红移的现象。
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=1.0\textwidth]{./Pictures/k.eps}
+    \caption{InGaAsP量子阱的C-HH和C-LH波长在不同k值和扩散长度$L_d$条件下的变化量。k值从上到下分别为0, 0.25, 0.35, 0.63, 1。}
+    \label{fig_k}
+\end{figure}
+
+除此之外，我们还可以关注C-HH和C-LH变化量之间的差异，如图\ref{fig_k}右图所示。我们可以看到，无论k值取什么值，C-HH总是可以比C-LH发生更大的变化。对于通常我们希望发生的蓝移100nm以上情况，可以发现C-HH总是可以比C-LH蓝移更大。因为C-HH主要影响TE分量，而C-LH主要影响TM分量，所以在这种情况下，TE的蓝移总是比TM大。这个结论可以用来解释量子阱混杂制作的光放大器的偏振不敏感特性。1996年，J.-J. He等人提出了在InP量子阱材料上，用量子阱混杂方法制作的光放大器可以消除偏振敏感特性\cite{He1996Polarization}，如图\ref{fig_amplifier}所示。在蓝移之前，TE的增益曲线对应的波长要比TM的波长大10nm左右，而在蓝移之后，两条曲线发生了重合。这说明在蓝移的过程中，TE分量比TM分量多蓝移了10nm左右，这与前面的描述是吻合的。
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=0.7\textwidth]{./Pictures/amplifier.eps}
+    \caption{测试得到的量子阱混杂之前和之后的TE和TM分量的增益曲线。其中实线表示TE分量，虚线表示TM分量。}
+    \label{fig_amplifier}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{KrF准分子激光器照射实现量子阱混杂技术的工艺研究}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+待添加。
 
-
-%%%%%%%%%%%%%%%%%%%%%%
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{量子阱混杂技术在集成光子回路中的应用}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%
 \section{V型腔激光器}
+%%%%%%%%%%%%%%%%%%%%
 
 随着密集波分复用（DWDM）技术的广泛使用，波长敏捷型光子集成回路变得越来越重要。波分复用技术通过在一路光纤中传输多路光信号的方法，增加了网络的带宽。国际通信联盟（ICU）制定了WDM的基本规则。现在的光信道的间隔为100GHz或0.8纳米，未来将会变成50GHz或25GHz。要实现WDM，就需要激光器覆盖ICU规定的每个信道。想要覆盖这么多的信道，使用大范围可调谐激光器是一个明智的选择。
 
 现在人们在实验室已经制造出了很多种大范围可调谐激光器。其中一种就是V型腔激光器。V型腔激光器的示意图如图\ref{fig_vccl}所示。其主要部分包含两个长度不同的光学谐振腔，一个耦合相位为 180°的半波耦合器以及一个波长调谐区。另外在V字型的闭合端（图\ref{fig_vccl}中右端）有一个耦合器，V字型的开口端（图\ref{fig_vccl} 中左端）为一个多模耦合器（MMI）。
 
-\begin{figure}[!htb]
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.7\textwidth]{./Pictures/vccl.eps}\\
   \caption{V型腔激光器的光学显微镜图\cite{jin201116-VCCL}}
@@ -692,7 +797,7 @@ To interpret the above observations of bandgap modification, the wavelength shif
 \begin{equation}\label{eqa_Daltafc}
   \Delta f_c = \frac{\Delta f \Delta f^\prime}{|\Delta f-\Delta f^\prime|}
 \end{equation}
-\begin{figure}[!htb]
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.7\textwidth]{./Pictures/deltaf.eps}\\
   \caption{固定增益腔和信道选择腔的谐振频率位置关系的示意图，以及激光工作物质的增益光谱曲线}
@@ -720,11 +825,13 @@ To interpret the above observations of bandgap modification, the wavelength shif
 
 鉴于通常的ITU 标，假设$\Delta f=100GHz$,$\Delta f^\prime=90GHz$，则激光器工作频率的调节范围与仅靠调节折射率相比扩大了10倍。在上述数据下，设波导的有效群折射率为3.215，则固定增益腔以及信道选择腔的长度分别为：$L=466.24\mu m$，$L^\prime=518.31\mu m$，其长度与传统的DFB以及法布里- 珀罗激光器相当。相比之下，取样光栅、超结构光栅DBR激光器，由于受到器件长度以及损耗的限制，通常的信道间隔至少为600GHz，而对于通常的密集波分复用系统（DWDM）信道间隔一般为50GHz~200GHz，很难实现完全的数字式调谐。对于V型耦合腔宽带可调谐激光器，则完全不受此限制，并且利用深刻蚀槽做反射面技术，通过全息平版照相（photolithographic）技术可以精确控制激光器谐振腔的长度。激光器工作波长与ITU标准的些许偏离可以由微调固定腔的注入电流以及温度调谐来补偿。
 
+%%%%%%%%%%%%%%%%%%%%
 \section{电调谐与热调谐的区别}
+%%%%%%%%%%%%%%%%%%%%
 
 尽管V型腔激光器已经在InP和GaAs材料上同时取得了成功，但是他们距离实际商业应用还有很长的路要走。在光通信领域中，为了得到更快的速度，我们常常会使用尽可能快的调制器，例如电吸收调制器可以将调制速度提升到40Gbps（文献？），甚至使用行波电极做到100Gbps（？）。除了提升同一个波长信号的调制速度，还要提升不同波长信号之间的切换速度。2012年，浙江大学的郭山溧等人测试了V型腔激光器的波长切换速度\cite{guo2012experimental}。他们所测试的激光器波长调谐曲线如图\ref{fig_gsl_tuning}所示。在波长调谐电流大于45mA的情况下，激光器的输出波长随着电流的增加而增加，这与之前的所有文章中的结果是一致的，也就是热调谐。而当调谐电流小于20mA时，激光器的输出波长随着电流的增加而减小，这与之前的情况刚好相反，这主要是载流子注入调谐，也就是电调谐在起作用。而在20mA和45mA之间的部分，波长没有发生跳变，也就是电调谐和热调谐的作用刚好相互抵消。然后，他们选择了其中的四个波长，如表\ref{tab_4wavelength}所示。其中，通道A和通道B之间的切换时间通过光外差方法测试得到仅有500ps，也就是相当于2G的速度。而通道3和通道4之间的切换时间通过光滤波器方法测试得到有20us，也就是相当于50k的速度。显然，热调谐的速度远远小于电调谐的速度。同时，电调谐需要的电流远小于热调谐的电流，这样还可以减小整个激光器的功耗。在实际的光通信应用中，我们需要的是电调谐的V型腔激光器。
 
-\begin{figure}[!htb]
+\begin{figure}[!h]
     \centering
     \includegraphics[width=0.7\textwidth]{./Pictures/GSL_tuning.eps}
     \caption{V型腔激光器的波长调谐曲线}
@@ -750,34 +857,41 @@ To interpret the above observations of bandgap modification, the wavelength shif
 
 然而，要实现电调谐的V型腔激光器并没有那么简单。在郭山溧的文章中，我们可以看到电调谐得到的波长通道仅有8个，而且他们的边模抑制比特性甚至由于太不好而没有给出。所以，我们希望将电调谐和热调谐达到平衡的流量值，尽可能往大电流的方向上移动，同时能保持输出光谱的边模抑制比在35dB以上。其中一种方法就是将V型腔的调谐腔处理成无源腔。2003年，加州大学圣芭芭拉校区的Erik J. Skogen等人研究了量子阱混杂的蓝移对载流子注入调谐的范围影响，如图\ref{fig_qwi_tuning}所示。显然，蓝移最大的情况下能得到的载流子注入调谐的范围也是最大的。这说明了我们需要在V型腔的调谐腔上做出尽可能大的蓝移，同时不改变材料的其他特性。
 
-\begin{figure}[!htb]
+\begin{figure}[!h]
     \centering
     \includegraphics[width=0.7\textwidth]{./Pictures/qwi_tuning.eps}
     \caption{量子阱混杂的蓝移大小（圆形1475nm，三角形1446nm，方形1423nm）对载流子注入调谐大小的影响}
     \label{fig_qwi_tuning}
 \end{figure}
 
-
+%%%%%%%%%%%%%%%%%%%%
 \section{包含量子阱混杂技术的V型腔激光器的制作过程}
+%%%%%%%%%%%%%%%%%%%%
 
 包含量子阱混杂的V型腔激光器的AutoCAD设计图如图\ref{fig_vccl_design}所示。
 
-\begin{figure}[!htb]
+\begin{figure}[!h]
     \centering
     \includegraphics[width=0.7\textwidth]{./Pictures/vccl_design.eps}
     \caption{包含量子阱混杂的V型腔激光器的AutoCAD设计图}
     \label{fig_vccl_design}
 \end{figure}
 
-
+%%%%%%%%%%%%%%%%%%%%
 \section{测试结果与分析}
+%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%
 \chapter{总结和展望}
+%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%
 \section{本文总结}
+%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%
 \section{本文展望}
+%%%%%%%%%%%%%%%%%%%%
 
 \ZJUbackmatter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
