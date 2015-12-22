@@ -269,13 +269,13 @@ includehead, includefoot]{geometry}
         \fi \\[4mm]
         {\bfseries\fangsong\zihao{3}\ZJU@label@Etitle:}
         &
-        {\bf\zihao{-2}\ZJUunderline[320pt]{\ZJU@value@Etitle}}\\[3mm]
+        {\bf\zihao{-2}\ZJUunderline[200pt]{\ZJU@value@Etitle}}\\[3mm]
         &
         %同样是英文标题的多行判断，如果一行写不下，有第二行显示，否则不显示第二行
         \ifx\ZJU@value@Etitletl\undefined
           \hfil
         \else
-          {\bf\zihao{-2}\ZJUunderline[320pt]{\ZJU@value@Etitletl}}
+          {\bf\zihao{-2}\ZJUunderline[200pt]{\ZJU@value@Etitletl}}
         \fi\\
       \end{tabular}
 
