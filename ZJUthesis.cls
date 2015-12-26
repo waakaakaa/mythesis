@@ -58,7 +58,7 @@
 % hyperref包要2011年版的才行
 \hypersetup{CJKbookmarks=true,%
        bookmarksnumbered,%
-               linkcolor=blue,%
+               linkcolor=red,%
               plainpages=false,%
             pdfstartview=FitH,
                hidelinks
@@ -154,6 +154,7 @@ includehead, includefoot]{geometry}
 \newcommand\titletl[1]{\def\ZJU@value@titletl{#1}}
 \newcommand\Etitle[1]{\def\ZJU@value@Etitle{#1}}
 \newcommand\Etitletl[1]{\def\ZJU@value@Etitletl{#1}}
+\newcommand\Etitletll[1]{\def\ZJU@value@Etitletll{#1}}
 \renewcommand\author[1]{\def\ZJU@value@author{#1}}
 \newcommand\supervisor[1]{\def\ZJU@value@supervisor{#1}}
 \newcommand\cpsupervisor[1]{\def\ZJU@value@cpsupervisor{#1}}
@@ -162,6 +163,7 @@ includehead, includefoot]{geometry}
 \newcommand\researchdm[1]{\def\ZJU@value@researchdm{#1}}
 \newcommand\submitdate[1]{\def\ZJU@value@submitdate{#1}}
 \newcommand\defenddate[1]{\def\ZJU@value@defenddate{#1}}
+\newcommand\Edefenddate[1]{\def\ZJU@value@Edefenddate{#1}}
 \newcommand\institute[1]{\def\ZJU@value@institute{#1}}
 \newcommand\chairman[1]{\def\ZJU@value@chairman{#1}}
 \newcommand\commissionerA[1]{\def\ZJU@value@commissionerA{#1}}
@@ -217,17 +219,14 @@ includehead, includefoot]{geometry}
       \ZJUunderline[90pt]{\ZJU@value@classification}
       \hfill
       \ZJU@label@serialnumber~
-      \ZJUunderline[60pt]{\ZJU@value@serialnumber} \\
+      \ZJUunderline[90pt]{\ZJU@value@serialnumber} \\
       \vspace{3pt}
-      \ifx\ZJU@value@IsSecret\undefined
-      \else
-        \hspace{2em}
-        \ZJU@label@SecretLevel~
-        \ZJUunderline[90pt]{\ZJU@value@SecretLevel}
-      \fi
+      \hspace{2em}
+      \ZJU@label@SecretLevel~
+      \ZJUunderline[90pt]{\ZJU@value@SecretLevel}
       \hfill
       \ZJU@label@PersonalID~
-      \ZJUunderline[60pt]{\ZJU@value@PersonalID}\\
+      \ZJUunderline[90pt]{\ZJU@value@PersonalID}\\
       }
       % 这个尺寸可以更改
       \vspace{10mm}
@@ -259,23 +258,29 @@ includehead, includefoot]{geometry}
       \begin{tabular}{rl}
         {\bfseries\fangsong\zihao{3}\ZJU@label@title:}
         &
-        \bfseries\fangsong\zihao{-2} \ZJUunderline[280pt]{\ZJU@value@title} \\[3mm]
+        \bfseries\fangsong\zihao{-2} \ZJUunderline[320pt]{\ZJU@value@title} \\[3mm]
         &
         % 这个地方是做第二行标题的判断，如果标题一行写不下，有第二行则显示，否则不显示
         \ifx\ZJU@value@titletl\undefined
           \hfil
         \else
-          {\bfseries\fangsong\zihao{-2}\ZJUunderline[280pt]{\ZJU@value@titletl}}
+          {\bfseries\fangsong\zihao{-2}\ZJUunderline[320pt]{\ZJU@value@titletl}}
         \fi \\[4mm]
         {\bfseries\fangsong\zihao{3}\ZJU@label@Etitle:}
         &
-        {\bf\zihao{-2}\ZJUunderline[200pt]{\ZJU@value@Etitle}}\\[3mm]
+        {\bf\zihao{-2}\ZJUunderline[320pt]{\ZJU@value@Etitle}}\\[3mm]
         &
         %同样是英文标题的多行判断，如果一行写不下，有第二行显示，否则不显示第二行
         \ifx\ZJU@value@Etitletl\undefined
           \hfil
         \else
-          {\bf\zihao{-2}\ZJUunderline[200pt]{\ZJU@value@Etitletl}}
+          {\bf\zihao{-2}\ZJUunderline[320pt]{\ZJU@value@Etitletl}}
+        \fi\\[3mm]
+        &
+        %同样是英文标题的多行判断，如果第二行写不下，有第三行显示，否则不显示第三行
+        \ifx\ZJU@value@Etitletll\undefined
+        \else
+          {\bf\zihao{-2}\ZJUunderline[320pt]{\ZJU@value@Etitletll}}
         \fi\\
       \end{tabular}
 
@@ -328,7 +333,7 @@ includehead, includefoot]{geometry}
       \ifx\ZJU@value@titletl\undefined
         \hfil\\
       \else
-        \ZJUunderline[300pt]{\ZJU@value@titletl}\\
+        \ZJUunderline[340pt]{\ZJU@value@titletl}\\
       \fi}
 
       % 插入一段距离
@@ -352,14 +357,14 @@ includehead, includefoot]{geometry}
       \fi
       {\bfseries\songti\zihao{3}\textcolor{white}{。}}\\
 
-      %\hfil\\
-      指导教师签名：}
+      \vspace{2mm}
+      指导教师签名：
       \ifpdf
            \ZJUunderline[120pt]{}%\includegraphics[width=100pt,height=45pt]{./Signature/sign_ch_s.pdf}}
       \else
            \ZJUunderline[120pt]{}%\includegraphics[width=100pt,height=45pt]{./Signature/sign_ch_s.eps}}
       \fi
-      {\bfseries\songti\zihao{3}\textcolor{white}{。}}\\
+      {\bfseries\songti\zihao{3}\textcolor{white}{。}}}\\
 
 
       % 插入空白
@@ -367,7 +372,7 @@ includehead, includefoot]{geometry}
 
       % 评阅人信息
       \newcolumntype{A}{>{\songti\zihao{4}}r}
-      \newcolumntype{B}{>{\songti\zihao{4}}c}
+      \newcolumntype{B}{>{\songti\zihao{4}}l}
       \begin{tabular}{A@{：}B}
         论文评阅人1 & \ZJUunderline[260pt]{\ZJU@value@reviewersA}\\[2.2mm]
         评阅人2 & \ZJUunderline[260pt]{\ZJU@value@reviewersB}\\[2.2mm]
@@ -382,11 +387,11 @@ includehead, includefoot]{geometry}
       % 答辩委员会名单
       \begin{tabular}{A@{：}B}
         答辩委员会主席 & \ZJUunderline[260pt]{\ZJU@value@chairman}\\[2.2mm]
-        委员1 & \ZJUunderline[260pt]{\ZJU@value@commissionerA}\\[2.2mm]
-        委员2 & \ZJUunderline[260pt]{\ZJU@value@commissionerB}\\[2.2mm]
-        委员3 & \ZJUunderline[260pt]{\ZJU@value@commissionerC}\\[2.2mm]
-        委员4 & \ZJUunderline[260pt]{\ZJU@value@commissionerD}\\[2.2mm]
-        委员5 & \ZJUunderline[260pt]{\ZJU@value@commissionerE}\\
+                委员1 & \ZJUunderline[260pt]{\ZJU@value@commissionerA}\\[2.2mm]
+                委员2 & \ZJUunderline[260pt]{\ZJU@value@commissionerB}\\[2.2mm]
+                委员3 & \ZJUunderline[260pt]{\ZJU@value@commissionerC}\\[2.2mm]
+                委员4 & \ZJUunderline[260pt]{\ZJU@value@commissionerD}\\[2.2mm]
+              % 委员5 & \ZJUunderline[260pt]{\ZJU@value@commissionerE}\\
       \end{tabular}
 
     \end{center}
@@ -421,17 +426,23 @@ includehead, includefoot]{geometry}
     \linespread{1.3}
     \begin{center}
       % 英文论文题目
-      {\bf\zihao{-2}\ZJUunderline[340pt]{\ZJU@value@englishtitle}\\
-      \vspace{1ex}
+      {\bf\zihao{-2}\ZJUunderline[340pt]{\ZJU@value@Etitle}\\
       % 判断英文标题有无第二行
-      \ifx\ZJU@value@englishtitletl\undefined
+      \ifx\ZJU@value@Etitletl\undefined
         \hfil
       \else
-        \ZJUunderline[340pt]{\ZJU@value@englishtitletl}
-      \fi}
+        \ZJUunderline[340pt]{\ZJU@value@Etitletl}\\
+      \fi
+      % 判断英文标题有无第三行
+      \ifx\ZJU@value@Etitletll\undefined
+        \hfil
+      \else
+        \ZJUunderline[340pt]{\ZJU@value@Etitletll}\\
+      \fi
+      }
 
       % 插入一段空白距离
-      \vspace{7mm}
+      \vspace{12mm}
 
       % 浙大校徽
       \ifpdf
@@ -441,7 +452,7 @@ includehead, includefoot]{geometry}
       \fi
 
       % 插入一段空白距离
-      \vspace{1mm}
+      \vspace{8mm}
 
       % 作者英文签名
       {\bf\zihao{3}\hspace{1.7em}Author's signature:
@@ -450,7 +461,7 @@ includehead, includefoot]{geometry}
       \else
       \ZJUunderline[120pt]{}\\%\includegraphics[width=100pt,height=45pt]{./Signature/sign_en.eps}}\\
       \fi
-      %\hfil\\
+      \vspace{2mm}
       % 导师英文签名
       Supervisor's signature:
       \ifpdf
@@ -461,37 +472,37 @@ includehead, includefoot]{geometry}
     \end{center}
 
     % 加入一段空白
-    \vspace{7mm}
+    \vspace{8mm}
 
     \zihao{4}
     % 论文评阅人列表（英文）
     %\newcolumntype{A}{>{\zihao{4}}r}
     %\newcolumntype{B}{>{\zihao{4}}c}
     \begin{tabular}{rc}
-      Thesis reviewer1: & \ZJUunderline[260pt]{\ZJU@value@EreviewersA}\\[1.2mm]
-      Thesis reviewer1: & \ZJUunderline[260pt]{\ZJU@value@EreviewersB}\\[1.2mm]
-      Thesis reviewer1: & \ZJUunderline[260pt]{\ZJU@value@EreviewersC}\\[1.2mm]
-      Thesis reviewer1: & \ZJUunderline[260pt]{\ZJU@value@EreviewersD}\\[1.2mm]
-      Thesis reviewer1: & \ZJUunderline[260pt]{\ZJU@value@EreviewersE}\\
+      Thesis reviewer1: & \ZJUunderline[280pt]{\ZJU@value@EreviewersA}\\[1.2mm]
+      Thesis reviewer1: & \ZJUunderline[280pt]{\ZJU@value@EreviewersB}\\[1.2mm]
+      Thesis reviewer1: & \ZJUunderline[280pt]{\ZJU@value@EreviewersC}\\[1.2mm]
+      Thesis reviewer1: & \ZJUunderline[280pt]{\ZJU@value@EreviewersD}\\[1.2mm]
+      Thesis reviewer1: & \ZJUunderline[280pt]{\ZJU@value@EreviewersE}\\
     \end{tabular}
 
     % 加入一段空白
     \vspace{6mm}
 
     % 答辩委员会名单（英文）
-    \begin{tabular}{rc}
-      Chair: & \ZJUunderline[260pt]{\ZJU@value@Echairman}\\[1.2mm]
-      Committeeman1: & \ZJUunderline[260pt]{\ZJU@value@EcommissionerA}\\[1.2mm]
-      Committeeman2: & \ZJUunderline[260pt]{\ZJU@value@EcommissionerB}\\[1.2mm]
-      Committeeman3: & \ZJUunderline[260pt]{\ZJU@value@EcommissionerC}\\[1.2mm]
-      Committeeman4: & \ZJUunderline[260pt]{\ZJU@value@EcommissionerD}\\[1.2mm]
-      Committeeman5: & \ZJUunderline[260pt]{\ZJU@value@EcommissionerE}\\
+    \begin{tabular}{rl}
+              Chair: & \ZJUunderline[280pt]{\ZJU@value@Echairman}\\[1.2mm]
+      Committeeman1: & \ZJUunderline[280pt]{\ZJU@value@EcommissionerA}\\[1.2mm]
+      Committeeman2: & \ZJUunderline[280pt]{\ZJU@value@EcommissionerB}\\[1.2mm]
+      Committeeman3: & \ZJUunderline[280pt]{\ZJU@value@EcommissionerC}\\[1.2mm]
+      Committeeman4: & \ZJUunderline[280pt]{\ZJU@value@EcommissionerD}\\[1.2mm]
+      % Committeeman5: & \ZJUunderline[280pt]{\ZJU@value@EcommissionerE}\\
     \end{tabular}
     
     % 加一段空白
     \vfill
     % 答辩日期
-    {\hfill Date of oral defence:\ZJUunderline[150pt]{\ZJU@value@defenddate}\hspace{3em}}
+    {\hfill Date of oral defence:\ZJUunderline[150pt]{\ZJU@value@Edefenddate}\hspace{3em}}
   }
 }
 
@@ -499,7 +510,69 @@ includehead, includefoot]{geometry}
 \newcommand\makeOSandCPRTpage{%
   \cleardoublepage
   \thispagestyle{empty}
-  \input{./Chapters/Copyright.tex}
+  % 头上几行空白
+  \vspace*{-2mm}
+  {\songti
+  \zihao{-4}
+
+  \begin{center}
+    {\noindent\songti\zihao{-2}浙江大学研究生学位论文独创性声明}\\
+  \end{center}
+
+  % 修改一下默认行距，仅在此页范围内有效
+  {\setlength{\baselineskip}{1.3\baselineskip}
+  本人声明所呈交的学位论文是本人在导师指导下进行的研究工作及取得的研究成果。
+  除了文中特别加以标注和致谢的地方外，论文中不包含其他人已经发表或撰写过的研究成果，
+  也不包含为获得{\bfseries\kaishu\zihao{4}\underline{~浙江大学~}}
+  或其他教育机构的学位或证书而使用过的材料。
+  与我一同工作的同志对本研究所做的任何贡献均已在论文中作了明确的说明并表示谢意。
+
+  \vspace{10ex}
+
+  %{\songti\zihao{-4}学位论文作者签名：\hspace{8em}
+  {\songti\zihao{-4}学位论文作者签名：
+  \ifpdf
+  {\hbox to 8em{}}%\includegraphics[width=6em,height=3em]{./Signature/sign_cr_1.pdf}}}
+  \else
+  {\hbox to 8em{}}%\includegraphics[width=6em,height=3em]{./Signature/sign_cr_1.eps}}}
+  \fi
+  \PutsigndateA}
+  
+  \vspace{12ex}
+
+  \begin{center}
+    {\noindent\songti\zihao{-2}学位论文版权使用授权书}
+  \end{center}
+
+  本学位论文作者完全了解{\bfseries\kaishu\zihao{4}\underline{~浙江大学~}}
+  有权保留并向国家有关部门或机构送交本论文的复印件和磁盘，允许论文被查阅和借阅。
+  本人授权 浙江大学 可以将学位论文的全部或部分内容编入有关数据库进行检索和传播，
+  可以采用影印、缩印或扫描等复制手段保存、汇编学位论文。
+
+  （保密的学位论文在解密后适用本授权书）
+
+  \vspace{2ex}
+
+  学位论文作者签名：
+  \ifpdf
+  {\hbox to 9em{}}%\includegraphics[width=6em,height=3em]{./Signature/sign_cr_2.pdf}}}
+  \else
+  {\hbox to 9em{}}%\includegraphics[width=6em,height=3em]{./Signature/sign_cr_2.eps}}}
+  \fi
+  导师签名：
+  \ifpdf
+  {\hbox to 9em{}}%\includegraphics[width=6em,height=3em]{./Signature/sign_cr_s.pdf}}}
+  \else
+  {\hbox to 9em{}}%\includegraphics[width=6em,height=3em]{./Signature/sign_cr_s.eps}}}
+  \fi
+
+  \vspace{2ex}
+
+  \PutsigndateB
+  \hspace{3em}
+  \PutsigndateC}
+  }
+
 }
 
 \newcommand\ZJUfrontmatter{%
